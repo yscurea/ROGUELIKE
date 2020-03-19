@@ -5,16 +5,28 @@ using UnityEngine;
 
 namespace RogueLikeProject.MyLib
 {
+	public struct Coordinate
+	{
+		public int x;
+		public int z;
+	}
+	public struct Rect
+	{
+		public Coordinate start;
+		public Coordinate end;
+	}
+
+
 	public enum Direction
 	{
-		NORTH,
-		EAST,
-		SOUTH,
-		WEST,
-		NORTHEAST,
-		SOUTHEAST,
-		SOUTHWEST,
-		NORTHWEST,
+		North,
+		East,
+		South,
+		West,
+		NorthEast,
+		SouthEast,
+		SouthWest,
+		NorthWest,
 	}
 
 	public class Random
