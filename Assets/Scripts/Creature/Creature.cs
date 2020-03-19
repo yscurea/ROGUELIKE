@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject
+namespace RogueLikeProject.Creature
 {
-	namespace Creature
+	//行動の処理
+	public enum Action
 	{
-		abstract class Creature : MonoBehaviour
-		{
-
-		}
+		
 	}
+
+
+	public abstract class Creature : MonoBehaviour
+	{
+		protected CreatureStatus status;
+
+
+
+	}
+
 }
