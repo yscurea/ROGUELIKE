@@ -22,9 +22,8 @@ namespace RogueLikeProject.Map
 		public Direction direction;
 		public Coordinate coordinate;
 	}
-	public struct Room
+	public class Room
 	{
-		public int id;
 		public Rect rect;
 		public List<Coordinate> entrances;
 	}
@@ -53,17 +52,17 @@ namespace RogueLikeProject.Map
 		private System.Random random;
 
 
-		public MapGenerator(int height, int wintth)
+		public MapGenerator(int height, int width)
 		{
-			this.map = new MapType[height, wintth];
+			this.map = new MapType[height, width];
 			for (var hi = 0; hi < height; ++hi)
 			{
-				for (var wi = 0; wi < wintth; ++wi)
+				for (var wi = 0; wi < width; ++wi)
 				{
 					this.map[hi, wi] = MapType.Wall;
 				}
 			}
-			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = wintth - 1 - frameBreadth, z = height - 1 - frameBreadth } };
+			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = width - 1 - frameBreadth, z = height - 1 - frameBreadth } };
 			splittableRects = new List<Rect>();
 			indivisibleRects = new List<Rect>();
 			nodes = new Queue<Node>();
@@ -76,7 +75,7 @@ namespace RogueLikeProject.Map
 			splitFrecency -= 1;
 			while (splitFrecency > 0 && splittableRects.Count != 0)
 			{
-				if (DivinteMap())
+				if (DivideMap())
 				{
 					splitFrecency -= 1;
 				}
@@ -138,7 +137,7 @@ namespace RogueLikeProject.Map
 			return map;
 		}
 
-		public bool DivinteMap()
+		public bool DivideMap()
 		{
 			int itr = random.Next(0, splittableRects.Count);
 			Rect rect = splittableRects[itr];

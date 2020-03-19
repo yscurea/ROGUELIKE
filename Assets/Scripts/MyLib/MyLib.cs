@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 namespace RogueLikeProject.MyLib
 {
@@ -41,8 +41,20 @@ namespace RogueLikeProject.MyLib
 			directions.Add(Direction.West);
 
 			return directions[UnityEngine.Random.Range(0, directions.Count)];
-
 		}
+
+		public static Direction RandomDirection()
+		{
+			List<Direction> directions = new List<Direction>();
+
+			foreach(Direction dir in Enum.GetValues(typeof(Direction)))
+			{
+				directions.Add(dir);
+			}
+
+			return directions[UnityEngine.Random.Range(0, directions.Count)];
+		}
+
 	}
 
 }

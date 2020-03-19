@@ -7,6 +7,6 @@ namespace RogueLikeProject.Creature
 {
 	public abstract class CreatureAnimator : MonoBehaviour
 	{
-		
+
 	}
 }
