@@ -31,7 +31,18 @@ namespace RogueLikeProject.MyLib
 
 	public class Random
 	{
+		public static Direction RandomFourDirection()
+		{
+			List<Direction> directions = new List<Direction>();
 
+			directions.Add(Direction.North);
+			directions.Add(Direction.East);
+			directions.Add(Direction.South);
+			directions.Add(Direction.West);
+
+			return directions[UnityEngine.Random.Range(0, directions.Count)];
+
+		}
 	}
 
 }

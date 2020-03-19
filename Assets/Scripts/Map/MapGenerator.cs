@@ -95,7 +95,7 @@ namespace RogueLikeProject.Map
 				while (thisEntranceNum-- > 0)
 				{
 					var limit = 20;
-					while (GenerateEntrance(room.Value, RandomFourDirection()) == false && limit-- > 0)
+					while (GenerateEntrance(room.Value, MyLib.Random.RandomFourDirection()) == false && limit-- > 0)
 					{
 
 					}
@@ -338,25 +338,5 @@ namespace RogueLikeProject.Map
 				}
 			}
 		}
-
-
-		public Direction RandomFourDirection()
-		{
-			int tmp = random.Next(0, 4);
-			switch (tmp)
-			{
-				case 0:
-					return Direction.North;
-				case 1:
-					return Direction.East;
-				case 2:
-					return Direction.South;
-				case 3:
-					return Direction.West;
-				default:
-					return Direction.North;
-			}
-		}
-
 	}
 }
