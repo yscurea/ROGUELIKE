@@ -10,7 +10,7 @@ namespace RogueLikeProject.Map
 	public enum MapType
 	{
 		Wall,
-		InsideWall,
+		//InsideWall,
 		Way,
 		Room,
 		Entrance,
@@ -31,22 +31,21 @@ namespace RogueLikeProject.Map
 	public class MapGenerator
 	{
 		private MapType[,] map;
-		private Rect mainMap;
-		private Queue<Node> nodes;
-		[SerializeField]
+
+		//[SerializedField] variables
 		private int frameBreadth = 1;
-		[SerializeField]
 		private int maxRoomNum = 20;
-		[SerializeField]
 		private int minRoomNum = 5;
-		[SerializeField]
 		private int maxRoomSize = 100;
-		[SerializeField]
 		private int minRoomSize = 5;
+
+		//hidden variables
+		private Rect mainMap;//map without frame
 		private int maxEntranceNum = 3;
 		private int minEntranceNum = 1;
+		private Queue<Node> nodes;
 		private int roomNowItr = 0;
-		private int splitFrecency;
+		private int splitFrequency;
 		private List<Rect> splittableRects;
 		private List<Rect> indivisibleRects;
 		private System.Random random;
@@ -54,7 +53,7 @@ namespace RogueLikeProject.Map
 
 		public MapGenerator(int height, int width)
 		{
-			this.map = new MapType[height, width];
+			map = new MapType[height, width];
 			for (var hi = 0; hi < height; ++hi)
 			{
 				for (var wi = 0; wi < width; ++wi)
@@ -62,22 +61,24 @@ namespace RogueLikeProject.Map
 					this.map[hi, wi] = MapType.Wall;
 				}
 			}
+			
 			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = width - 1 - frameBreadth, z = height - 1 - frameBreadth } };
+
 			splittableRects = new List<Rect>();
 			indivisibleRects = new List<Rect>();
 			nodes = new Queue<Node>();
 			random = new System.Random();
 			splittableRects.Add(mainMap);
 		}
-		public MapType[,] GenerateMap(Dictionary<int, Room> rooms)//update rooms
+		public MapType[,] GenerateMap(Dictionary<int, Room> rooms)
 		{
-			splitFrecency = random.Next(minRoomNum, maxRoomNum);
-			splitFrecency -= 1;
-			while (splitFrecency > 0 && splittableRects.Count != 0)
+			splitFrequency = random.Next(minRoomNum, maxRoomNum);
+			splitFrequency -= 1;
+			while (splitFrequency > 0 && splittableRects.Count != 0)//divide map as much as possible
 			{
 				if (DivideMap())
 				{
-					splitFrecency -= 1;
+					splitFrequency--;
 				}
 			}
 			indivisibleRects.AddRange(splittableRects);
@@ -102,7 +103,7 @@ namespace RogueLikeProject.Map
 			}
 			while (nodes.Count != 0)
 			{
-				GenerateWay(nodes.Dequeue(), true, false, MapType.Way, MapType.InsideWall, MapType.Wall);
+				GenerateWay(nodes.Dequeue(), true, false, MapType.Way, MapType.Wall);
 			}
 
 			for (var hi = 0; hi < map.GetLength(0); hi++)
@@ -115,7 +116,7 @@ namespace RogueLikeProject.Map
 					}
 				}
 			}
-			for (var hi = 0; hi < map.GetLength(0); ++hi)
+			/*for (var hi = 0; hi < map.GetLength(0); ++hi)
 			{
 				for (var wi = 0; wi < map.GetLength(1); ++wi)
 				{
@@ -133,7 +134,7 @@ namespace RogueLikeProject.Map
 						}
 					}
 				}
-			}
+			}*/
 			return map;
 		}
 
@@ -198,7 +199,7 @@ namespace RogueLikeProject.Map
 				{
 					if (wi == roomRect.start.x || wi == roomRect.end.x || hi == roomRect.start.z || hi == roomRect.end.z)
 					{
-						map[hi, wi] = MapType.InsideWall;
+						map[hi, wi] = MapType.Wall;
 					}
 					else
 					{
