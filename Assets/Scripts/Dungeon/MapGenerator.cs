@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Map
+namespace RogueLikeProject.Dungeon
 {
 	using MyLib;
 
 	public enum MapType
 	{
 		Wall,
-		//InsideWall,
+		InsideWall,
 		Way,
 		Room,
 		Entrance,
@@ -28,7 +28,7 @@ namespace RogueLikeProject.Map
 		public List<Coordinate> entrances;
 	}
 
-	public class MapGenerator
+	public class DungeonGenerator
 	{
 		private MapType[,] map;
 
@@ -51,18 +51,18 @@ namespace RogueLikeProject.Map
 		private System.Random random;
 
 
-		public MapGenerator(int height, int width)
+		public DungeonGenerator(int z, int x)
 		{
-			map = new MapType[height, width];
-			for (var hi = 0; hi < height; ++hi)
+			map = new MapType[z, x];
+			for (var zi = 0; zi < z; zi++)
 			{
-				for (var wi = 0; wi < width; ++wi)
+				for (var xi = 0; xi < x; xi++)
 				{
-					this.map[hi, wi] = MapType.Wall;
+					this.map[zi, xi] = MapType.Wall;
 				}
 			}
 			
-			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = width - 1 - frameBreadth, z = height - 1 - frameBreadth } };
+			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = x - 1 - frameBreadth, z = z - 1 - frameBreadth } };
 
 			splittableRects = new List<Rect>();
 			indivisibleRects = new List<Rect>();
