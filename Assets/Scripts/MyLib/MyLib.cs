@@ -27,6 +27,7 @@ namespace RogueLikeProject.MyLib
 		SouthEast,
 		SouthWest,
 		NorthWest,
+		None,
 	}
 
 	public class Random

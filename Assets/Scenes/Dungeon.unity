@@ -150,10 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c0d526842598546a1f8ef892965172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonX: 0
-  dungeonZ: 0
   dungeonGenerator:
+    generationMethod: 0
+    dungeonZ: 0
+    dungeonX: 0
     frameBreadth: 0
+    maxRoomNum: 0
+    minRoomNum: 0
+    maxRoomSize: 0
+    minRoomSize: 0
+  dungeonInstantiation:
+    wall: {fileID: 1696940381228950467, guid: 0ffcaffb77167d441a0f3d915519df11, type: 3}
 --- !u!4 &873641
 Transform:
   m_ObjectHideFlags: 0

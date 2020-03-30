@@ -9,27 +9,21 @@ namespace RogueLikeProject.GameDirector
 	{
 		private static int hierarchy = 0;
 
-
-		//DungeonPosition --|> each position
-		//DungeonPosition{ static protected dungeon(X and Y) }
-		[SerializeField]
-		private int dungeonX;
-		[SerializeField]
-		private int dungeonZ;
-
 		[SerializeField]
 		Dungeon.DungeonGenerator dungeonGenerator;
+		[SerializeField]
+		Dungeon.DungeonInstantiation dungeonInstantiation;
+
 
 		void Start()
 		{
 			InitDungeon();
-
-			//generate dungeon
-			//generate creature
 		}
 
 		private void InitDungeon()
 		{
+			int dungeonZ, dungeonX;
+			(dungeonZ, dungeonX) = dungeonGenerator.GetDungeonSize();
 			dungeonGenerator = new Dungeon.DungeonGenerator(dungeonZ, dungeonX);
 
 			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);

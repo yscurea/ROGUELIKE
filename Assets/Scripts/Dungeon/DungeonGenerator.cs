@@ -6,13 +6,29 @@ using UnityEngine;
 namespace RogueLikeProject.Dungeon
 {
 	using MyLib;
+	enum GenerationMethod
+	{
+		Random,
+		Open
+	}
+
 	[System.Serializable]
 	public class DungeonGenerator
 	{
 		private TerrainType[,] map;
 
 		[SerializeField]
+		private GenerationMethod generationMethod = GenerationMethod.Random;
+
+		[SerializeField]
+		private int dungeonZ;
+		[SerializeField]
+		private int dungeonX;
+
+		[SerializeField]
 		private int frameBreadth = 1;
+
+		[Header("Room parameter")]
 		[SerializeField]
 		private int maxRoomNum = 20;
 		[SerializeField]
@@ -121,7 +137,6 @@ namespace RogueLikeProject.Dungeon
 			}
 			return map;
 		}
-
 		public bool DivideMap()
 		{
 			int itr = random.Next(0, splittableRects.Count);
@@ -169,7 +184,6 @@ namespace RogueLikeProject.Dungeon
 				return true;
 			}
 		}
-
 		public void GenerateRoom(Rect rect, Dictionary<int, Room> rooms)
 		{
 			Rect roomRect = new Rect();
@@ -204,7 +218,6 @@ namespace RogueLikeProject.Dungeon
 			}
 			roomNowItr += 1;
 		}
-
 		private bool GenerateEntrance(Room room, Direction dir)
 		{
 			Coordinate point = new Coordinate();
@@ -250,7 +263,6 @@ namespace RogueLikeProject.Dungeon
 			else
 				return false;
 		}
-
 		private bool GenerateWay(Node node, bool isEnqueue, bool isIncludeDestination, params TerrainType[] destination)
 		{
 			int dx = 0, dz = 0;
@@ -324,5 +336,11 @@ namespace RogueLikeProject.Dungeon
 
 
 		}
+
+		public (int, int) GetDungeonSize()
+		{
+			return (dungeonZ, dungeonX);
+		}
+
 	}
 }
