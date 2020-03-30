@@ -8,13 +8,13 @@ namespace RogueLikeProject.Creature
 	using MyLib;
 	public class CreaturePosition : MonoBehaviour
 	{
-		public static CreaturePosition[,] creaturePositions;
+		private static CreaturePosition[,] creaturesMap;
 
 		private Coordinate coordinate;
 
-		static CreaturePosition()
+		public static void InitCreaturesPosition(int z, int x)
 		{
-			
+			creaturesMap = new CreaturePosition[z, x];
 		}
 
 

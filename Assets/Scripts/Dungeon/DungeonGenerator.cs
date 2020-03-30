@@ -6,40 +6,22 @@ using UnityEngine;
 namespace RogueLikeProject.Dungeon
 {
 	using MyLib;
-
-	public enum MapType
-	{
-		Wall,
-		InsideWall,
-		Way,
-		Room,
-		Entrance,
-		Spliter
-	}
-
-	public struct Node
-	{
-		public Direction direction;
-		public Coordinate coordinate;
-	}
-	public class Room
-	{
-		public Rect rect;
-		public List<Coordinate> entrances;
-	}
-
+	[System.Serializable]
 	public class DungeonGenerator
 	{
-		private MapType[,] map;
+		private TerrainType[,] map;
 
-		//[SerializedField] variables
+		[SerializeField]
 		private int frameBreadth = 1;
+		[SerializeField]
 		private int maxRoomNum = 20;
+		[SerializeField]
 		private int minRoomNum = 5;
+		[SerializeField]
 		private int maxRoomSize = 100;
+		[SerializeField]
 		private int minRoomSize = 5;
 
-		//hidden variables
 		private Rect mainMap;//map without frame
 		private int maxEntranceNum = 3;
 		private int minEntranceNum = 1;
@@ -50,18 +32,19 @@ namespace RogueLikeProject.Dungeon
 		private List<Rect> indivisibleRects;
 		private System.Random random;
 
+		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
 
 		public DungeonGenerator(int z, int x)
 		{
-			map = new MapType[z, x];
+			map = new TerrainType[z, x];
 			for (var zi = 0; zi < z; zi++)
 			{
 				for (var xi = 0; xi < x; xi++)
 				{
-					this.map[zi, xi] = MapType.Wall;
+					this.map[zi, xi] = TerrainType.Wall;
 				}
 			}
-			
+
 			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = x - 1 - frameBreadth, z = z - 1 - frameBreadth } };
 
 			splittableRects = new List<Rect>();
@@ -69,8 +52,9 @@ namespace RogueLikeProject.Dungeon
 			nodes = new Queue<Node>();
 			random = new System.Random();
 			splittableRects.Add(mainMap);
+			GenerateMap();
 		}
-		public MapType[,] GenerateMap(Dictionary<int, Room> rooms)
+		public TerrainType[,] GenerateMap()
 		{
 			splitFrequency = random.Next(minRoomNum, maxRoomNum);
 			splitFrequency -= 1;
@@ -95,7 +79,7 @@ namespace RogueLikeProject.Dungeon
 				while (thisEntranceNum-- > 0)
 				{
 					var limit = 20;
-					while (GenerateEntrance(room.Value, MyLib.Random.RandomFourDirection()) == false && limit-- > 0)
+					while (GenerateEntrance(room.Value, Random.RandomFourDirection()) == false && limit-- > 0)
 					{
 
 					}
@@ -103,38 +87,38 @@ namespace RogueLikeProject.Dungeon
 			}
 			while (nodes.Count != 0)
 			{
-				GenerateWay(nodes.Dequeue(), true, false, MapType.Way, MapType.Wall);
+				GenerateWay(nodes.Dequeue(), true, false, TerrainType.Way, TerrainType.Wall);
 			}
 
 			for (var hi = 0; hi < map.GetLength(0); hi++)
 			{
 				for (var wi = 0; wi < map.GetLength(1); ++wi)
 				{
-					if (map[hi, wi] == MapType.Spliter)
+					if (map[hi, wi] == TerrainType.Splitter)
 					{
-						map[hi, wi] = MapType.Wall;
+						map[hi, wi] = TerrainType.Wall;
 					}
 				}
 			}
-			/*for (var hi = 0; hi < map.GetLength(0); ++hi)
+			for (var hi = 0; hi < map.GetLength(0); ++hi)
 			{
 				for (var wi = 0; wi < map.GetLength(1); ++wi)
 				{
-					if (map[hi, wi] == MapType.Way)
+					if (map[hi, wi] == TerrainType.Way)
 					{
 						for (int dy = -1; dy <= 1; ++dy)
 						{
 							for (int dx = -1; dx <= 1; ++dx)
 							{
-								if (map[hi + dy, wi + dx] == MapType.Wall)
+								if (map[hi + dy, wi + dx] == TerrainType.Wall)
 								{
-									map[hi + dy, wi + dx] = MapType.InsideWall;
+									map[hi + dy, wi + dx] = TerrainType.Wall;//InsideWall
 								}
 							}
 						}
 					}
 				}
-			}*/
+			}
 			return map;
 		}
 
@@ -163,7 +147,7 @@ namespace RogueLikeProject.Dungeon
 				int xAxis = random.Next(rect.start.z + minRoomSize, rect.end.z - minRoomSize);
 				for (var i = rect.start.x; i <= rect.end.x; ++i)
 				{
-					map[xAxis, i] = MapType.Spliter;
+					map[xAxis, i] = TerrainType.Splitter;
 				}
 				Rect top = new Rect() { start = rect.start, end = new Coordinate() { x = rect.end.x, z = xAxis - 1 } };
 				Rect bottom = new Rect() { start = new Coordinate() { x = rect.start.x, z = xAxis + 1 }, end = rect.end };
@@ -176,7 +160,7 @@ namespace RogueLikeProject.Dungeon
 				int zAxis = random.Next(rect.start.x + minRoomSize, rect.end.x - minRoomSize);
 				for (var i = rect.start.z; i <= rect.end.z; ++i)
 				{
-					map[i, zAxis] = MapType.Spliter;
+					map[i, zAxis] = TerrainType.Splitter;
 				}
 				Rect left = new Rect() { start = rect.start, end = new Coordinate() { x = zAxis - 1, z = rect.end.z } };
 				Rect right = new Rect() { start = new Coordinate() { x = zAxis + 1, z = rect.start.z }, end = rect.end };
@@ -199,11 +183,11 @@ namespace RogueLikeProject.Dungeon
 				{
 					if (wi == roomRect.start.x || wi == roomRect.end.x || hi == roomRect.start.z || hi == roomRect.end.z)
 					{
-						map[hi, wi] = MapType.Wall;
+						map[hi, wi] = TerrainType.Wall;
 					}
 					else
 					{
-						map[hi, wi] = MapType.Room;
+						map[hi, wi] = TerrainType.Room;
 					}
 				}
 			}
@@ -229,7 +213,7 @@ namespace RogueLikeProject.Dungeon
 				case Direction.North:
 					point.x = random.Next(room.rect.start.x + 1, room.rect.end.x - 1);
 					point.z = room.rect.start.z;
-					if (map[point.z, point.x - 1] == MapType.Way || map[point.z, point.x] == MapType.Way || map[point.z, point.x + 1] == MapType.Way)
+					if (map[point.z, point.x - 1] == TerrainType.Way || map[point.z, point.x] == TerrainType.Way || map[point.z, point.x + 1] == TerrainType.Way)
 					{
 						return false;
 					}
@@ -237,7 +221,7 @@ namespace RogueLikeProject.Dungeon
 				case Direction.South:
 					point.x = random.Next(room.rect.start.x + 1, room.rect.end.x - 1);
 					point.z = room.rect.end.z;
-					if (map[point.z, point.x - 1] == MapType.Way || map[point.z, point.x] == MapType.Way || map[point.z, point.x + 1] == MapType.Way)
+					if (map[point.z, point.x - 1] == TerrainType.Way || map[point.z, point.x] == TerrainType.Way || map[point.z, point.x + 1] == TerrainType.Way)
 					{
 						return false;
 					}
@@ -245,7 +229,7 @@ namespace RogueLikeProject.Dungeon
 				case Direction.East:
 					point.x = room.rect.end.x;
 					point.z = random.Next(room.rect.start.z + 1, room.rect.end.z - 1);
-					if (map[point.z + 1, point.x] == MapType.Way || map[point.z, point.x] == MapType.Way || map[point.z - 1, point.x] == MapType.Way)
+					if (map[point.z + 1, point.x] == TerrainType.Way || map[point.z, point.x] == TerrainType.Way || map[point.z - 1, point.x] == TerrainType.Way)
 					{
 						return false;
 					}
@@ -253,7 +237,7 @@ namespace RogueLikeProject.Dungeon
 				case Direction.West:
 					point.x = room.rect.start.x;
 					point.z = random.Next(room.rect.start.z + 1, room.rect.end.z - 1);
-					if (map[point.z + 1, point.x] == MapType.Way || map[point.z, point.x] == MapType.Way || map[point.z - 1, point.x] == MapType.Way)
+					if (map[point.z + 1, point.x] == TerrainType.Way || map[point.z, point.x] == TerrainType.Way || map[point.z - 1, point.x] == TerrainType.Way)
 					{
 						return false;
 					}
@@ -261,16 +245,16 @@ namespace RogueLikeProject.Dungeon
 				default:
 					return false;
 			}
-			if (GenerateWay(new Node() { direction = dir, coordinate = point }, true, true, MapType.Spliter, MapType.Way))
+			if (GenerateWay(new Node() { direction = dir, coordinate = point }, true, true, TerrainType.Splitter, TerrainType.Way))
 				return true;
 			else
 				return false;
 		}
 
-		private bool GenerateWay(Node node, bool isEnqueue, bool isIncludeDestination, params MapType[] destination)
+		private bool GenerateWay(Node node, bool isEnqueue, bool isIncludeDestination, params TerrainType[] destination)
 		{
 			int dx = 0, dz = 0;
-			bool CheckDestination(MapType nowPosition)
+			bool CheckDestination(TerrainType nowPosition)
 			{
 				for (var i = 0; i < destination.GetLength(0); ++i)
 				{
@@ -312,31 +296,33 @@ namespace RogueLikeProject.Dungeon
 					}
 					if (isEnqueue)
 					{
-						if (map[node.coordinate.z + i * dz + 1, node.coordinate.x + dx * i] == MapType.Spliter)
+						if (map[node.coordinate.z + i * dz + 1, node.coordinate.x + dx * i] == TerrainType.Splitter)
 						{
 							nodes.Enqueue(new Node() { direction = Direction.South, coordinate = new Coordinate() { z = node.coordinate.z + i * dz + 1, x = node.coordinate.x + dx * i } });
 						}
-						if (map[node.coordinate.z + i * dz - 1, node.coordinate.x + dx * i] == MapType.Spliter)
+						if (map[node.coordinate.z + i * dz - 1, node.coordinate.x + dx * i] == TerrainType.Splitter)
 						{
 							nodes.Enqueue(new Node() { direction = Direction.North, coordinate = new Coordinate() { z = node.coordinate.z + i * dz - 1, x = node.coordinate.x + dx * i } });
 						}
-						if (map[node.coordinate.z + i * dz, node.coordinate.x + dx * i - 1] == MapType.Spliter)
+						if (map[node.coordinate.z + i * dz, node.coordinate.x + dx * i - 1] == TerrainType.Splitter)
 						{
 							nodes.Enqueue(new Node() { direction = Direction.West, coordinate = new Coordinate() { z = node.coordinate.z + i * dz, x = node.coordinate.x + dx * i - 1 } });
 						}
-						if (map[node.coordinate.z + i * dz, node.coordinate.x + dx * i + 1] == MapType.Spliter)
+						if (map[node.coordinate.z + i * dz, node.coordinate.x + dx * i + 1] == TerrainType.Splitter)
 						{
 							nodes.Enqueue(new Node() { direction = Direction.East, coordinate = new Coordinate() { z = node.coordinate.z + i * dz, x = node.coordinate.x + dx * i + 1 } });
 						}
 					}
 					while (i >= 0)
 					{
-						map[node.coordinate.z + i * dz, node.coordinate.x + i * dx] = MapType.Way;
+						map[node.coordinate.z + i * dz, node.coordinate.x + i * dx] = TerrainType.Way;
 						i -= 1;
 					}
 					return true;
 				}
 			}
+
+
 		}
 	}
 }

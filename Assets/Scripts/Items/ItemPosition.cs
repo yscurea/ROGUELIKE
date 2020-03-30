@@ -7,7 +7,13 @@ namespace RogueLikeProject.item
 {
 	public class ItemPosition : MonoBehaviour
 	{
-		public static ItemPosition[,] itemPositions;
+		private static ItemPosition[,] itemsMap;
+
+		public static void InitItemsPosition(int z, int x)
+		{
+			itemsMap = new ItemPosition[z, x];
+		}
+
 
 
 	}

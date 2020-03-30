@@ -58,3 +58,27 @@ namespace RogueLikeProject.MyLib
 	}
 
 }
+
+namespace RogueLikeProject.Dungeon
+{
+	using MyLib;
+	public enum TerrainType
+	{
+		Wall,
+		Way,
+		Room,
+		Entrance,
+		Splitter
+	}
+
+	public struct Node
+	{
+		public Direction direction;
+		public Coordinate coordinate;
+	}
+	public class Room
+	{
+		public Rect rect;
+		public List<Coordinate> entrances;
+	}
+}
