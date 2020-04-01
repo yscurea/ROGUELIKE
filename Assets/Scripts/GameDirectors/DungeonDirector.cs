@@ -10,9 +10,9 @@ namespace RogueLikeProject.GameDirector
 		private static int hierarchy = 0;
 
 		[SerializeField]
-		Dungeon.DungeonGenerator dungeonGenerator;
-		[SerializeField]
 		Dungeon.DungeonInstantiation dungeonInstantiation;
+		[SerializeField]
+		Dungeon.DungeonGenerator dungeonGenerator;
 
 
 		void Start()
@@ -25,6 +25,8 @@ namespace RogueLikeProject.GameDirector
 			int dungeonZ, dungeonX;
 			(dungeonZ, dungeonX) = dungeonGenerator.GetDungeonSize();
 			dungeonGenerator = new Dungeon.DungeonGenerator(dungeonZ, dungeonX);
+			dungeonInstantiation.DungeonInstantiate(dungeonGenerator.GenerateMap());
+
 
 			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);
 			item.ItemPosition.InitItemsPosition(dungeonZ, dungeonX);

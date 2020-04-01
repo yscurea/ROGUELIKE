@@ -68,7 +68,6 @@ namespace RogueLikeProject.Dungeon
 			nodes = new Queue<Node>();
 			random = new System.Random();
 			splittableRects.Add(mainMap);
-			GenerateMap();
 		}
 		public TerrainType[,] GenerateMap()
 		{
@@ -103,7 +102,7 @@ namespace RogueLikeProject.Dungeon
 			}
 			while (nodes.Count != 0)
 			{
-				GenerateWay(nodes.Dequeue(), true, false, TerrainType.Way, TerrainType.Wall);
+				GenerateWay(nodes.Dequeue(), true, false, TerrainType.Way, TerrainType.InsideWall, TerrainType.Wall);
 			}
 
 			for (var hi = 0; hi < map.GetLength(0); hi++)
@@ -128,7 +127,7 @@ namespace RogueLikeProject.Dungeon
 							{
 								if (map[hi + dy, wi + dx] == TerrainType.Wall)
 								{
-									map[hi + dy, wi + dx] = TerrainType.Wall;//InsideWall
+									map[hi + dy, wi + dx] = TerrainType.InsideWall;
 								}
 							}
 						}
@@ -197,7 +196,7 @@ namespace RogueLikeProject.Dungeon
 				{
 					if (wi == roomRect.start.x || wi == roomRect.end.x || hi == roomRect.start.z || hi == roomRect.end.z)
 					{
-						map[hi, wi] = TerrainType.Wall;
+						map[hi, wi] = TerrainType.InsideWall;
 					}
 					else
 					{

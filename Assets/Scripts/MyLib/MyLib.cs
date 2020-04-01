@@ -66,6 +66,7 @@ namespace RogueLikeProject.Dungeon
 	public enum TerrainType
 	{
 		Wall,
+		InsideWall,
 		Way,
 		Room,
 		Entrance,

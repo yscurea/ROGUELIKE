@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
-
-
-
 	[System.Serializable]
 	public class DungeonInstantiation
 	{
@@ -18,28 +15,27 @@ namespace RogueLikeProject.Dungeon
 		private GameObject floor;
 
 
-		private void Instantiate(TerrainType[,] dungeonInfo)
+		public void DungeonInstantiate(TerrainType[,] dungeonInfo)
 		{
 
-			for(int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
+			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
 			{
-				for(int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
+				for (int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
 				{
-					GameObject tmp;
 					switch (dungeonInfo[zi, xi])
 					{
 						case TerrainType.Room:
-						case TerrainType.Way:
-
-
 							break;
+						case TerrainType.Way:
+							break;
+						case TerrainType.InsideWall:
 						case TerrainType.Wall:
+							GameObject.Instantiate(wall, new Vector3(xi, 0, zi), Quaternion.identity);
 							break;
 						default:
 							break;
 					}
 				}
-
 			}
 		}
 	}

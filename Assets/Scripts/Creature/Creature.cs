@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace RogueLikeProject.Creature
 {
-	//行動の処理
 	public enum Action
 	{
 		
