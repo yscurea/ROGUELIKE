@@ -9,6 +9,45 @@ namespace RogueLikeProject.MyLib
 	{
 		public int x;
 		public int z;
+
+		public static Coordinate operator+ (Coordinate coordinate,Direction dir)
+		{
+			switch (dir)
+			{
+				case Direction.East:
+					coordinate.x++;
+					break;
+				case Direction.North:
+					coordinate.z--;
+					break;
+				case Direction.South:
+					coordinate.z++;
+					break;
+				case Direction.West:
+					coordinate.x--;
+					break;
+				case Direction.NorthEast:
+					coordinate.z--;
+					coordinate.x++;
+					break;
+				case Direction.NorthWest:
+					coordinate.z--;
+					coordinate.x--;
+					break;
+				case Direction.SouthEast:
+					coordinate.z++;
+					coordinate.x++;
+					break;
+				case Direction.SouthWest:
+					coordinate.z++;
+					coordinate.x--;
+					break;
+				case Direction.None:
+					break;
+			}
+			return coordinate;
+		}
+
 	}
 	public struct Rect
 	{
