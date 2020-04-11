@@ -27,7 +27,6 @@ namespace RogueLikeProject.GameDirector
 			dungeonGenerator = new Dungeon.DungeonGenerator(dungeonZ, dungeonX);
 			dungeonInstantiation.DungeonInstantiate(dungeonGenerator.GenerateMap());
 
-
 			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);
 			item.ItemPosition.InitItemsPosition(dungeonZ, dungeonX);
 		}

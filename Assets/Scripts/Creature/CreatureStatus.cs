@@ -9,7 +9,7 @@ namespace RogueLikeProject.Creature
 		void ApplyDamage(float damage);
 	}
 
-	abstract public class CreatureStatus : MonoBehaviour,IDamageable
+	abstract public class CreatureStatus : IDamageable
 	{
 		protected float hp;
 		protected float MaxHp;

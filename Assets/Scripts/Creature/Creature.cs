@@ -10,11 +10,11 @@ namespace RogueLikeProject.Creature
 	}
 
 
-	public abstract class Creature : MonoBehaviour
+	public abstract class Creature
 	{
 		protected CreatureStatus status;
 
-
+		public abstract bool Act();
 
 	}
 

@@ -6,7 +6,11 @@ using UnityEngine;
 namespace RogueLikeProject.Creature
 {
 	using MyLib;
-	public class CreaturePosition : MonoBehaviour
+
+
+
+
+	public class CreaturePosition
 	{
 		private static CreaturePosition[,] creaturesMap;
 
@@ -16,13 +20,25 @@ namespace RogueLikeProject.Creature
 		{
 			creaturesMap = new CreaturePosition[z, x];
 		}
-
-
 		public void SwapPosition(Coordinate targetPosition)
+		{
+			static void swap<T>(ref T lhs, ref T rhs)
+			{
+				T tmp;
+				tmp = lhs;
+				lhs = rhs;
+				rhs = tmp;
+			}
+			swap(ref creaturesMap[targetPosition.z, targetPosition.x], ref creaturesMap[coordinate.z, coordinate.x]);
+		}
+		public Coordinate GetPosition()
+		{
+			return coordinate;
+		}
+		public void UpdatePosition()
 		{
 
 		}
-
 
 	}
 }

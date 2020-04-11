@@ -8,7 +8,7 @@ namespace RogueLikeProject.Creature.GamePlayer
 	{
 		override public void ApplyDamage(float damage)
 		{
-			
+			hp -= damage;
 		}
 	}
 }

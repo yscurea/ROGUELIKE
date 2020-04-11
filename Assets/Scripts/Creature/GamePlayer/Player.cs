@@ -6,9 +6,13 @@ namespace RogueLikeProject.Creature.GamePlayer
 {
 	public class Player : Creature
 	{
-		private void Start()
+		public override bool Act()
 		{
-			status = new PlayerStatus();
+			//ターンが経過しない行動をしたときは
+			//return false;
+			//ターンが経過する行動をしたときに
+			return true;
 		}
+
 	}
 }

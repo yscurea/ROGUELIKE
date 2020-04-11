@@ -49,6 +49,7 @@ namespace RogueLikeProject.Dungeon
 		private System.Random random;
 
 		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
+		RoomDirector roomDirector = new RoomDirector();
 
 		public DungeonGenerator(int z, int x)
 		{
@@ -134,6 +135,8 @@ namespace RogueLikeProject.Dungeon
 					}
 				}
 			}
+			roomDirector.InitRomms(rooms);
+
 			return map;
 		}
 		public bool DivideMap()

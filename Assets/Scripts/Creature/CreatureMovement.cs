@@ -7,6 +7,8 @@ namespace RogueLikeProject.Creature
 {
 	public abstract class CreatureMovement : MonoBehaviour
 	{
-		
+		protected CreaturePosition position;
+
+
 	}
 }
