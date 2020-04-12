@@ -29,7 +29,6 @@ namespace RogueLikeProject.Creature.GamePlayer
 		{
 			UpdatePosition();
 		}
-
 		private void UpdatePosition()
 		{
 			transform.position = Vector3.MoveTowards(
@@ -38,7 +37,6 @@ namespace RogueLikeProject.Creature.GamePlayer
 				moveSpeed * Time.deltaTime
 			);
 		}
-
 		private void CheckInput()
 		{
 			if (inputHorizontal > inputThreshold)
