@@ -15,13 +15,14 @@ namespace RogueLikeProject.Dungeon
 		private GameObject floor;
 
 
-		public void DungeonInstantiate(TerrainType[,] dungeonInfo)
+		public void DungeonInstantiate(TerrainType[,] dungeonInfo,GameObject parent)
 		{
 
 			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
 			{
 				for (int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
 				{
+					GameObject tmp;
 					switch (dungeonInfo[zi, xi])
 					{
 						case TerrainType.Room:
@@ -30,7 +31,16 @@ namespace RogueLikeProject.Dungeon
 							break;
 						case TerrainType.InsideWall:
 						case TerrainType.Wall:
-							GameObject.Instantiate(wall, new Vector3(xi, 0, zi), Quaternion.identity);
+							tmp = GameObject.Instantiate(
+								wall,
+								new Vector3(
+									xi * DungeonDirector.sqareSize,
+									0,
+									zi * DungeonDirector.sqareSize
+								),
+								Quaternion.identity
+							);
+							tmp.transform.parent = parent.transform;
 							break;
 						default:
 							break;

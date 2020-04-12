@@ -9,7 +9,6 @@ namespace RogueLikeProject.MyLib
 	{
 		public int x;
 		public int z;
-
 		public static Coordinate operator+ (Coordinate coordinate,Direction dir)
 		{
 			switch (dir)
@@ -47,15 +46,12 @@ namespace RogueLikeProject.MyLib
 			}
 			return coordinate;
 		}
-
 	}
 	public struct Rect
 	{
 		public Coordinate start;
 		public Coordinate end;
 	}
-
-
 	public enum Direction
 	{
 		North,
@@ -121,5 +117,23 @@ namespace RogueLikeProject.Dungeon
 	{
 		public Rect rect;
 		public List<Coordinate> entrances;
+
+		public Coordinate RandomCoordinate()
+		{
+			int xMin = rect.start.x;
+			int xMax = rect.end.x;
+
+			int zMin = rect.start.z;
+			int zMax = rect.end.z;
+
+			Coordinate coordinate;
+
+			coordinate.x = UnityEngine.Random.Range(xMin, xMax);
+			coordinate.z = UnityEngine.Random.Range(zMin, zMax);
+
+			return coordinate;
+		}
+
+
 	}
 }

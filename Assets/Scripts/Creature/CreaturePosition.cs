@@ -6,10 +6,6 @@ using UnityEngine;
 namespace RogueLikeProject.Creature
 {
 	using MyLib;
-
-
-
-
 	public class CreaturePosition
 	{
 		private static CreaturePosition[,] creaturesMap;
@@ -22,7 +18,7 @@ namespace RogueLikeProject.Creature
 		}
 		public void SwapPosition(Coordinate targetPosition)
 		{
-			static void swap<T>(ref T lhs, ref T rhs)
+			void swap<T>(ref T lhs, ref T rhs)
 			{
 				T tmp;
 				tmp = lhs;
@@ -35,10 +31,9 @@ namespace RogueLikeProject.Creature
 		{
 			return coordinate;
 		}
-		public void UpdatePosition()
+		public void UpdatePosition(Direction dir)
 		{
-
+			coordinate += dir;
 		}
-
 	}
 }

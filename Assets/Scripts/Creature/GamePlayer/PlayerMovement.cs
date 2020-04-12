@@ -7,20 +7,13 @@ namespace RogueLikeProject.Creature.GamePlayer
 {
 	public class PlayerMovement : CreatureMovement
 	{
-		float targetPosition;
-		float nowPosition;
-
 		float inputVertical;
 		float inputHorizontal;
-		float inputThreshold = 0.3f;
+		float inputThreshold = 0.15f;
 
-		private void Start()
-		{
-
-		}
 		private void Update()
 		{
-			if (nowPosition == targetPosition)
+			if (this.transform.position == targetPosition)
 			{
 				inputVertical = Input.GetAxis("Vertical");
 				inputHorizontal = Input.GetAxis("Horizontal");
@@ -30,16 +23,60 @@ namespace RogueLikeProject.Creature.GamePlayer
 				inputVertical = 0.0f;
 				inputHorizontal = 0.0f;
 			}
+			CheckInput();
 		}
 		private void FixedUpdate()
 		{
-			if (inputHorizontal > inputThreshold && inputVertical > inputThreshold)
-			{
-
-			}
-			//else if(inputHorizontal> inputThreshold && inputVertical)
+			UpdatePosition();
 		}
 
+		private void UpdatePosition()
+		{
+			transform.position = Vector3.MoveTowards(
+				transform.position,
+				targetPosition,
+				moveSpeed * Time.deltaTime
+			);
+		}
+
+		private void CheckInput()
+		{
+			if (inputHorizontal > inputThreshold)
+			{
+				targetPosition.x += Dungeon.DungeonDirector.sqareSize;
+				if (inputVertical > inputThreshold)
+				{
+					targetPosition.z += Dungeon.DungeonDirector.sqareSize;
+				}
+				else if (inputVertical < -inputThreshold)
+				{
+					targetPosition.z -= Dungeon.DungeonDirector.sqareSize;
+				}
+			}
+			else if (inputHorizontal < -inputThreshold)
+			{
+				targetPosition.x -= Dungeon.DungeonDirector.sqareSize;
+				if (inputVertical > inputThreshold)
+				{
+					targetPosition.z += Dungeon.DungeonDirector.sqareSize;
+				}
+				else if (inputVertical < -inputThreshold)
+				{
+					targetPosition.z -= Dungeon.DungeonDirector.sqareSize;
+				}
+			}
+			else
+			{
+				if (inputVertical > inputThreshold)
+				{
+					targetPosition.z += Dungeon.DungeonDirector.sqareSize;
+				}
+				else if (inputVertical < -inputThreshold)
+				{
+					targetPosition.z -= Dungeon.DungeonDirector.sqareSize;
+				}
+			}
+		}
 
 
 	}
