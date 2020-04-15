@@ -12,9 +12,9 @@ namespace RogueLikeProject.Dungeon
 		private static int hierarchy = 0;
 
 		[SerializeField]
-		Dungeon.DungeonInstantiation dungeonInstantiation;
+		DungeonInstantiation dungeonInstantiation;
 		[SerializeField]
-		Dungeon.DungeonGenerator dungeonGenerator;
+		DungeonGenerator dungeonGenerator;
 
 
 		void Start()
@@ -31,6 +31,10 @@ namespace RogueLikeProject.Dungeon
 
 			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);
 			item.ItemPosition.InitItemsPosition(dungeonZ, dungeonX);
+
+			//playerの生成
+			//敵を適量生成
+			//アイテムの生成
 		}
 
 
