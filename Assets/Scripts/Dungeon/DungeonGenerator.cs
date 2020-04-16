@@ -38,20 +38,20 @@ namespace RogueLikeProject.Dungeon
 		[SerializeField]
 		private int minRoomSize = 5;
 
-		private Rect mainMap;//map without frame
-		private int maxEntranceNum = 3;
-		private int minEntranceNum = 1;
-		private Queue<Node> nodes;
-		private int roomNowItr = 0;
-		private int splitFrequency;
-		private List<Rect> splittableRects;
-		private List<Rect> indivisibleRects;
-		private System.Random random;
+		Rect mainMap;//map without frame
+		int maxEntranceNum = 3;
+		int minEntranceNum = 1;
+		Queue<Node> nodes;
+		int roomNowItr = 0;
+		int splitFrequency;
+		List<Rect> splittableRects;
+		List<Rect> indivisibleRects;
+		System.Random random;
 
 		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
-		RoomDirector roomDirector = new RoomDirector();
+		RoomDirector roomDirector;
 
-		public DungeonGenerator(int z, int x)
+		public DungeonGenerator(int z, int x,ref RoomDirector roomDirector)
 		{
 			map = new TerrainType[z, x];
 			for (var zi = 0; zi < z; zi++)
@@ -69,6 +69,7 @@ namespace RogueLikeProject.Dungeon
 			nodes = new Queue<Node>();
 			random = new System.Random();
 			splittableRects.Add(mainMap);
+			this.roomDirector = roomDirector;
 		}
 		public TerrainType[,] GenerateMap()
 		{
