@@ -18,25 +18,13 @@ namespace RogueLikeProject.Dungeon
 		private TerrainType[,] map;
 
 		[SerializeField]
-		private GenerationMethod generationMethod = GenerationMethod.Random;
+		GenerationMethod generationMethod = GenerationMethod.Random;
 
-		[SerializeField]
-		private int dungeonZ;
-		[SerializeField]
-		private int dungeonX;
-
-		[SerializeField]
-		private int frameBreadth = 1;
-
-		[Header("Room parameter")]
-		[SerializeField]
-		private int maxRoomNum = 20;
-		[SerializeField]
-		private int minRoomNum = 5;
-		[SerializeField]
-		private int maxRoomSize = 100;
-		[SerializeField]
-		private int minRoomSize = 5;
+		[SerializeField]int frameBreadth = 1;
+		[SerializeField]int maxRoomNum = 20;
+		[SerializeField]int minRoomNum = 5;
+		[SerializeField]int maxRoomSize = 100;
+		[SerializeField]int minRoomSize = 5;
 
 		Rect mainMap;//map without frame
 		int maxEntranceNum = 3;
@@ -51,7 +39,7 @@ namespace RogueLikeProject.Dungeon
 		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
 		RoomDirector roomDirector;
 
-		public DungeonGenerator(int z, int x,ref RoomDirector roomDirector)
+		public DungeonGenerator(int z, int x, ref RoomDirector roomDirector)
 		{
 			map = new TerrainType[z, x];
 			for (var zi = 0; zi < z; zi++)
@@ -339,11 +327,5 @@ namespace RogueLikeProject.Dungeon
 
 
 		}
-
-		public (int, int) GetDungeonSize()
-		{
-			return (dungeonZ, dungeonX);
-		}
-
 	}
 }

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using RogueLikeProject.MyLib;
+
 
 namespace RogueLikeProject.Creature
 {
-	using MyLib;
-	public class CreaturePosition
+	public class CreaturePosition : MonoBehaviour
 	{
 		private static CreaturePosition[,] creaturesMap;
-
 		private Coordinate coordinate;
+		Dungeon.RoomDirector roomDirector;
 
 		public static void InitCreaturesPosition(int z, int x)
 		{

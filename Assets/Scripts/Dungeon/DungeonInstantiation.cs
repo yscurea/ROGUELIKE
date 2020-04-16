@@ -8,14 +8,14 @@ namespace RogueLikeProject.Dungeon
 	[System.Serializable]
 	public class DungeonInstantiation
 	{
-		[SerializeField]
-		private GameObject wall;
+		[SerializeField]GameObject wall;
+		[SerializeField]GameObject floor;
 
-		[SerializeField]
-		private GameObject floor;
-
-
-		public void DungeonInstantiate(TerrainType[,] dungeonInfo,GameObject parent)
+		public DungeonInstantiation(TerrainType[,] dungeonInfo,GameObject parent)
+		{
+			DungeonInstantiate(dungeonInfo, parent);
+		}
+		void DungeonInstantiate(TerrainType[,] dungeonInfo,GameObject parent)
 		{
 
 			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)

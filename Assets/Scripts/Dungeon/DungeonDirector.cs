@@ -6,15 +6,18 @@ namespace RogueLikeProject.Dungeon
 {
 	public class DungeonDirector : MonoBehaviour
 	{
+		[SerializeField]
+		private int dungeonZ = 30;
+		[SerializeField]
+		private int dungeonX = 54;
+
 		public static float sqareSize = 1.0f;
 		private static int hierarchy = 0;
 
 		[SerializeField]
-		DungeonInstantiation dungeonInstantiation;
-		[SerializeField]
 		DungeonGenerator dungeonGenerator;
 		[SerializeField]
-		Creature.CreaturesManager creaturesManager;
+		DungeonInstantiation dungeonInstantiation;
 
 		RoomDirector roomDirector = new RoomDirector();
 
@@ -32,17 +35,11 @@ namespace RogueLikeProject.Dungeon
 
 		private void InitDungeon()
 		{
-			int dungeonZ, dungeonX;
-			(dungeonZ, dungeonX) = dungeonGenerator.GetDungeonSize();
-			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX,ref this.roomDirector);
-			dungeonInstantiation.DungeonInstantiate(dungeonGenerator.GenerateMap(), this.gameObject);
+			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX,ref roomDirector);
+			dungeonInstantiation = new DungeonInstantiation(dungeonGenerator.GenerateMap(), this.gameObject);
 
 			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);
 			item.ItemPosition.InitItemsPosition(dungeonZ, dungeonX);
-
-			//playerの生成
-			creaturesManager.InstantiateCreatures(this.roomDirector);
-			//アイテムの生成
 		}
 
 
