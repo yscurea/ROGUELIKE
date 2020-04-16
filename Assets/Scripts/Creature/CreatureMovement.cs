@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RogueLikeProject.Creature
 {
-	public abstract class CreatureMovement : MonoBehaviour
+	public class CreatureMovement : MonoBehaviour
 	{
 		protected CreaturePosition position;
 
@@ -25,6 +25,11 @@ namespace RogueLikeProject.Creature
 				tmp.z * Dungeon.DungeonDirector.sqareSize
 			);
 			targetPosition = nowPosition;
+		}
+
+		public void SetTargetPosition(Vector3 position)
+		{
+			targetPosition = position;
 		}
 
 	}

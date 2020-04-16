@@ -6,7 +6,7 @@ using UnityEngine;
 namespace RogueLikeProject.Creature
 {
 	[System.Serializable]
-	public class CreaturesManager
+	public class CreaturesObject
 	{
 		[SerializeField]
 		GameObject playerObject;
