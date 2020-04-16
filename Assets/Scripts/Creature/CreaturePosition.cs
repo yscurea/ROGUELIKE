@@ -11,7 +11,7 @@ namespace RogueLikeProject.Creature
 	{
 		private static CreaturePosition[,] creaturesMap;
 		private Coordinate coordinate;
-		Dungeon.RoomDirector roomDirector;
+		static Dungeon.RoomDirector roomDirector;
 
 		public static void InitCreaturesPosition(int z, int x)
 		{

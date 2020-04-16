@@ -7,7 +7,7 @@ namespace RogueLikeProject.Creature
 {
 	public abstract class CreatureMovement : MonoBehaviour
 	{
-		protected CreaturePosition position = new CreaturePosition();
+		protected CreaturePosition position;
 
 		protected float moveSpeed = 5.0f;
 		protected Vector3 targetPosition;
@@ -15,6 +15,8 @@ namespace RogueLikeProject.Creature
 
 		protected void Start()
 		{
+			position = GetComponent<CreaturePosition>();
+
 			MyLib.Coordinate tmp = position.GetPosition();
 
 			nowPosition = new Vector3(
