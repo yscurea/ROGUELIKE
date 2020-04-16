@@ -12,18 +12,9 @@ namespace RogueLikeProject.Creature
 		GameObject playerObject;
 		List<Creature> creatures = new List<Creature>();
 
-		public void InstantiateCreatures(Dungeon.RoomDirector roomDirector)
+		public void InstantiateCreatures()
 		{
-			MyLib.Coordinate coordinate = roomDirector.GetRandomCoordinate();
-			Vector3 position = new Vector3(
-				coordinate.x * Dungeon.DungeonDirector.sqareSize,
-				0,
-				coordinate.z * Dungeon.DungeonDirector.sqareSize
-				);
-			GameObject.Instantiate(playerObject, position, Quaternion.identity);
-
-
+			GameObject.Instantiate(playerObject);
 		}
-
 	}
 }

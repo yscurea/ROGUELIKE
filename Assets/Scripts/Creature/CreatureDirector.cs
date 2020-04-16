@@ -7,5 +7,10 @@ namespace RogueLikeProject.Creature
 	public class CreatureDirector : MonoBehaviour
 	{
 		[SerializeField] CreaturesObject creatureObject;
+
+		void Start()
+		{
+			creatureObject.InstantiateCreatures();
+		}
 	}
 }
