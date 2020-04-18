@@ -20,11 +20,11 @@ namespace RogueLikeProject.Dungeon
 		[SerializeField]
 		GenerationMethod generationMethod = GenerationMethod.Random;
 
-		[SerializeField]int frameBreadth = 1;
-		[SerializeField]int maxRoomNum = 20;
-		[SerializeField]int minRoomNum = 5;
-		[SerializeField]int maxRoomSize = 100;
-		[SerializeField]int minRoomSize = 5;
+		[SerializeField,Range(0,10)]int frameBreadth = 1;
+		[SerializeField,Range(1,100)]int maxRoomNum = 20;
+		[SerializeField,Range(1,100)]int minRoomNum = 5;
+		[SerializeField,Range(5,100)]int maxRoomSize = 100;
+		[SerializeField,Range(5,100)]int minRoomSize = 5;
 
 		Rect mainMap;//map without frame
 		int maxEntranceNum = 3;

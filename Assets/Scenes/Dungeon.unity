@@ -154,13 +154,13 @@ MonoBehaviour:
   dungeonX: 54
   dungeonGenerator:
     generationMethod: 0
-    frameBreadth: 0
-    maxRoomNum: 0
-    minRoomNum: 0
-    maxRoomSize: 0
-    minRoomSize: 0
+    frameBreadth: 1
+    maxRoomNum: 32
+    minRoomNum: 1
+    maxRoomSize: 15
+    minRoomSize: 4
   dungeonInstantiation:
-    wall: {fileID: 0}
+    wall: {fileID: 1696940381228950467, guid: 0ffcaffb77167d441a0f3d915519df11, type: 3}
     floor: {fileID: 0}
 --- !u!4 &873641
 Transform:
@@ -169,8 +169,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873639}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.947813, y: 4.824997, z: -2.2614565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 178001341}
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178001340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.947813, y: -4.824997, z: 2.2614565}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 873641}
