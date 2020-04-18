@@ -24,7 +24,6 @@ namespace RogueLikeProject.Creature
 			GetComponent<CreatureMovement>().SetTargetPosition(targetPosition);
 		}
 
-
 		public static void InitCreaturesPosition(int z, int x)
 		{
 			creaturesMap = new CreaturePosition[z, x];
