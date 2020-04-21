@@ -7,22 +7,10 @@ using RogueLikeProject.MyLib;
 
 namespace RogueLikeProject.Creature
 {
-	public class CreaturePosition : MonoBehaviour
+	public class CreaturePosition
 	{
 		static CreaturePosition[,] creaturesMap;
 		Coordinate coordinate;
-		static Dungeon.RoomDirector roomDirector;
-
-		void Start()
-		{
-			coordinate = roomDirector.GetRandomCoordinate();
-			Vector3 targetPosition = new Vector3(
-				coordinate.x * Dungeon.DungeonDirector.sqareSize,
-				0,
-				coordinate.z * Dungeon.DungeonDirector.sqareSize
-				);
-			GetComponent<CreatureMovement>().SetTargetPosition(targetPosition);
-		}
 
 		public static void InitCreaturesPosition(int z, int x)
 		{

@@ -6,7 +6,9 @@ namespace RogueLikeProject.Creature
 {
 	public class CreatureDirector : MonoBehaviour
 	{
+		[SerializeField] GameObject dungeonDirector;
 		[SerializeField] CreaturesObject creatureObject;
+
 
 		void Start()
 		{
