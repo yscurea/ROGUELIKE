@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
+	[DefaultExecutionOrder(-1)]
 	public class DungeonDirector : MonoBehaviour
 	{
 		[SerializeField]
