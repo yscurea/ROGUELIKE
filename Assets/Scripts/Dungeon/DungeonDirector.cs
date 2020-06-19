@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
+	[DefaultExecutionOrder(-1)]
 	public class DungeonDirector : MonoBehaviour
 	{
 		[SerializeField]
@@ -21,7 +22,7 @@ namespace RogueLikeProject.Dungeon
 		private void Start()
 		{
 			dungeonInstantiation = this.transform.GetChild(0).GetComponent<DungeonInstantiation>();
-			if (dungeonInstantiation is null)
+			if (dungeonInstantiation == null)
 			{
 				Debug.Log("dungeonInstantioation is null");
 			}
@@ -30,6 +31,11 @@ namespace RogueLikeProject.Dungeon
 		{
 			// floorNumberの値で出てくるキャラクターを変更する
 			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX);
+			if (dungeonInstantiation == null)
+			{
+				Debug.Log("is null");
+				dungeonInstantiation = this.transform.GetChild(0).GetComponent<DungeonInstantiation>();
+			}
 			dungeonInstantiation.DungeonInstantiate(dungeonGenerator.GenerateMap(), this.gameObject);
 		}
 	}

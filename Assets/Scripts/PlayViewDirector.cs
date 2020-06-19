@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 // ここが実際のゲームプレイ中の画面のスクリプトを全て制御する
 namespace RogueLikeProject.Dungeon
 {
-	[DefaultExecutionOrder(-1)]
 	public class PlayViewDirector : MonoBehaviour
 	{
 		//Scene deadScene;
@@ -22,7 +21,7 @@ namespace RogueLikeProject.Dungeon
 		private void Start()
 		{
 			dungeonDirector = transform.GetChild(0).gameObject.GetComponent<DungeonDirector>();
-			if (dungeonDirector is null)
+			if (dungeonDirector == null)
 			{
 				Debug.Log("null");
 			}
