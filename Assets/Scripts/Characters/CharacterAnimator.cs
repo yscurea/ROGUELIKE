@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
-	public abstract class CreatureAnimator : MonoBehaviour
+	public abstract class CharacterAnimator : MonoBehaviour
 	{
 
 	}

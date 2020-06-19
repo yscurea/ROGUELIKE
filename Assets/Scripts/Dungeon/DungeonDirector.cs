@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
-	[DefaultExecutionOrder(-1)]
 	public class DungeonDirector : MonoBehaviour
 	{
 		[SerializeField]
@@ -12,39 +11,26 @@ namespace RogueLikeProject.Dungeon
 		[SerializeField]
 		private int dungeonX = 54;
 
+		//定義場所を再考する
 		public static float sqareSize = 1.0f;
-		private static int hierarchy = 0;
 
 		[SerializeField]
 		DungeonGenerator dungeonGenerator;
-		[SerializeField]
 		DungeonInstantiation dungeonInstantiation;
 
-		RoomDirector roomDirector = new RoomDirector();
-
-		void Start()
+		private void Start()
 		{
-			InitDungeon();
+			dungeonInstantiation = this.transform.GetChild(0).GetComponent<DungeonInstantiation>();
+			if (dungeonInstantiation is null)
+			{
+				Debug.Log("dungeonInstantioation is null");
+			}
 		}
-
-		void Update()
+		public void InitDungeon(int floorNumber)
 		{
-			//playerの入力待ち
-			//playerの行動
-			//敵の行動
+			// floorNumberの値で出てくるキャラクターを変更する
+			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX);
+			dungeonInstantiation.DungeonInstantiate(dungeonGenerator.GenerateMap(), this.gameObject);
 		}
-
-		private void InitDungeon()
-		{
-			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX,ref roomDirector);
-			dungeonInstantiation = new DungeonInstantiation(dungeonGenerator.GenerateMap(), this.gameObject);
-
-			Creature.CreaturePosition.InitCreaturesPosition(dungeonZ, dungeonX);
-			item.ItemPosition.InitItemsPosition(dungeonZ, dungeonX);
-		}
-
-
-
-
 	}
 }

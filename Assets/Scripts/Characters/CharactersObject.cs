@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
 	[System.Serializable]
-	public class CreaturesObject
+	public class CharactersObject
 	{
 		[SerializeField]
 		GameObject playerObject;
-		List<Creature> creatures = new List<Creature>();
+		List<Character> characters = new List<Character>();
 
-		public void InstantiateCreatures()
+		public void InstantiateCharacters()
 		{
 			GameObject.Instantiate(playerObject);
 		}

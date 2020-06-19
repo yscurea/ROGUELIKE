@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Creature.GamePlayer
+namespace RogueLikeProject.Character.GamePlayer
 {
-	public class PlayerMovement : CreatureMovement
+	public class PlayerMovement : CharacterMovement
 	{
 		float inputVertical;
 		float inputHorizontal;

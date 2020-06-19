@@ -5,16 +5,16 @@ using UnityEngine;
 using RogueLikeProject.MyLib;
 
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
-	public class CreaturePosition
+	public class CharacterPosition
 	{
-		static CreaturePosition[,] creaturesMap;
+		static CharacterPosition[,] creaturesMap;
 		Coordinate coordinate;
 
 		public static void InitCreaturesPosition(int z, int x)
 		{
-			creaturesMap = new CreaturePosition[z, x];
+			creaturesMap = new CharacterPosition[z, x];
 		}
 		public void SwapPosition(Coordinate targetPosition)
 		{

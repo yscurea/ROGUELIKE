@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Creature.GamePlayer
+namespace RogueLikeProject.Character
 {
-	public class Player : Creature
+	public class Player : Character
 	{
 		public override bool Act()
 		{

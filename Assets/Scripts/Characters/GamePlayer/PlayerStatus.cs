@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Creature.GamePlayer
+namespace RogueLikeProject.Character.GamePlayer
 {
-	public class PlayerStatus : CreatureStatus
+	public class PlayerStatus : CharacterStatus
 	{
 		override public void ApplyDamage(float damage)
 		{

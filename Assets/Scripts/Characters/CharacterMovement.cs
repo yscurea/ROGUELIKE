@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
-	public class CreatureMovement : MonoBehaviour
+	public class CharacterMovement : MonoBehaviour
 	{
-		protected CreaturePosition position;
+		protected CharacterPosition position;
 
 		protected float moveSpeed = 5.0f;
 		protected Vector3 targetPosition;

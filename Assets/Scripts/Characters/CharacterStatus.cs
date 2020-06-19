@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
 	interface IDamageable
 	{
 		void ApplyDamage(float damage);
 	}
 
-	abstract public class CreatureStatus : IDamageable
+	abstract public class CharacterStatus : IDamageable
 	{
 		protected float hp;
 		protected float MaxHp;
@@ -18,7 +18,6 @@ namespace RogueLikeProject.Creature
 
 		protected float attackPower;
 		protected float defensePower;
-
 
 		public abstract void ApplyDamage(float damage);
 	}

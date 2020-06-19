@@ -20,11 +20,11 @@ namespace RogueLikeProject.Dungeon
 		[SerializeField]
 		GenerationMethod generationMethod = GenerationMethod.Random;
 
-		[SerializeField,Range(0,10)]int frameBreadth = 1;
-		[SerializeField,Range(1,100)]int maxRoomNum = 20;
-		[SerializeField,Range(1,100)]int minRoomNum = 5;
-		[SerializeField,Range(5,100)]int maxRoomSize = 100;
-		[SerializeField,Range(5,100)]int minRoomSize = 5;
+		[SerializeField, Range(0, 10)] int frameBreadth = 1;
+		[SerializeField, Range(1, 100)] int maxRoomNum = 20;
+		[SerializeField, Range(1, 100)] int minRoomNum = 5;
+		[SerializeField, Range(5, 100)] int maxRoomSize = 100;
+		[SerializeField, Range(5, 100)] int minRoomSize = 5;
 
 		Rect mainMap;//map without frame
 		int maxEntranceNum = 3;
@@ -39,7 +39,7 @@ namespace RogueLikeProject.Dungeon
 		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
 		RoomDirector roomDirector;
 
-		public DungeonGenerator(int z, int x, ref RoomDirector roomDirector)
+		public DungeonGenerator(int z, int x)
 		{
 			map = new TerrainType[z, x];
 			for (var zi = 0; zi < z; zi++)
@@ -57,10 +57,10 @@ namespace RogueLikeProject.Dungeon
 			nodes = new Queue<Node>();
 			random = new System.Random();
 			splittableRects.Add(mainMap);
-			this.roomDirector = roomDirector;
 		}
 		public TerrainType[,] GenerateMap()
 		{
+			//分割する回数
 			splitFrequency = random.Next(minRoomNum, maxRoomNum);
 			splitFrequency -= 1;
 			while (splitFrequency > 0 && splittableRects.Count != 0)//divide map as much as possible
@@ -124,7 +124,6 @@ namespace RogueLikeProject.Dungeon
 					}
 				}
 			}
-			roomDirector.InitRomms(rooms);
 
 			return map;
 		}
@@ -324,8 +323,6 @@ namespace RogueLikeProject.Dungeon
 					return true;
 				}
 			}
-
-
 		}
 	}
 }

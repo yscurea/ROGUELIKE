@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Creature
+namespace RogueLikeProject.Character
 {
 	public enum Action
 	{
-		
+
 	}
 
 
-	public abstract class Creature
+	public abstract class Character
 	{
-		protected CreatureStatus status;
+		protected CharacterStatus status;
 
 		public abstract bool Act();
 
