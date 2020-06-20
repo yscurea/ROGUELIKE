@@ -12,7 +12,7 @@ namespace RogueLikeProject.Dungeon
 	{
 		//Scene deadScene;
 		//Scene completeScene;
-		CharacterDirector characterDirector;
+		CharactersDirector characterDirector;
 		Player player;
 		DungeonDirector dungeonDirector;
 
@@ -20,7 +20,8 @@ namespace RogueLikeProject.Dungeon
 
 		private void Start()
 		{
-			dungeonDirector = transform.GetChild(0).gameObject.GetComponent<DungeonDirector>();
+			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
+			//characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
 			if (dungeonDirector == null)
 			{
 				Debug.Log("null");

@@ -5,19 +5,17 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
-	public class DungeonInstantiation : MonoBehaviour
+	public class DungeonObject : MonoBehaviour
 	{
-		[SerializeField] GameObject wall;
-		[SerializeField] GameObject floor;
+		GameObject wall, floor;
 
-		public void DungeonInstantiate(TerrainType[,] dungeonInfo, GameObject parent)
+		public void DungeonInstantiate(TerrainType[,] dungeonInfo)
 		{
 			wall = (GameObject)Resources.Load("Prefabs/DungeonObjects/Normal/Wall");
 			if (wall is null)
 			{
 				Debug.Log("wall is null");
 			}
-			Debug.Log("instantiate");
 			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
 			{
 				for (int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
@@ -40,14 +38,13 @@ namespace RogueLikeProject.Dungeon
 								),
 								Quaternion.identity
 							);
-							tmp.transform.parent = parent.transform;
+							tmp.transform.parent = this.transform;
 							break;
 						default:
 							break;
 					}
 				}
 			}
-			Debug.Log("instantiate");
 		}
 	}
 }

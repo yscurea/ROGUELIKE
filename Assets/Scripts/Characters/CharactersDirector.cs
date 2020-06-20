@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using RogueLikeProject.Dungeon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace RogueLikeProject.Character
 {
-	public class CharacterDirector : MonoBehaviour
+	public class CharactersDirector : MonoBehaviour
 	{
-		[SerializeField] GameObject dungeonDirector;
-		[SerializeField] CharactersObject charactersObject;
+		DungeonDirector dungeonDirector;
+		CharactersObject charactersObject;
 		void Start()
 		{
-			charactersObject.InstantiateCharacters();
+			GameObject tmp = this.transform.root.gameObject;
+			dungeonDirector = this.transform.root.gameObject.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
+			//charactersObject.InstantiateCharacters();
 		}
 	}
 }

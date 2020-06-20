@@ -6,7 +6,7 @@ using UnityEngine;
 namespace RogueLikeProject.Character
 {
 	[System.Serializable]
-	public class CharactersObject
+	public class CharactersObject : MonoBehaviour
 	{
 		[SerializeField]
 		GameObject playerObject;
@@ -14,7 +14,7 @@ namespace RogueLikeProject.Character
 
 		public void InstantiateCharacters()
 		{
-			GameObject.Instantiate(playerObject);
+			Instantiate(playerObject);
 		}
 	}
 }
