@@ -8,7 +8,8 @@ namespace RogueLikeProject.Character
 	[System.Serializable]
 	public class CharactersObject : MonoBehaviour
 	{
-		// resourceから読み込み
+		// resourceから読み込む
+		// player(操作可能キャラ)を複数にするかどうかは要検討
 		GameObject player;
 		GameObject[] characters;
 
@@ -21,6 +22,8 @@ namespace RogueLikeProject.Character
 		{
 			player = Resources.Load("Prefabs/Characters/Player") as GameObject;
 		}
+		
+		// 階層によって読み込むキャラを変更する？
 		public void LoadEnemy()
 		{
 			characters = Resources.LoadAll<GameObject>("Prefabs/Characters/Enemys");
@@ -29,6 +32,5 @@ namespace RogueLikeProject.Character
 		{
 			Instantiate(player);
 		}
-		//comment
 	}
 }
