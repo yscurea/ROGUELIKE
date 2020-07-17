@@ -9,20 +9,26 @@ namespace RogueLikeProject.Character
 	public class CharactersObject : MonoBehaviour
 	{
 		// resourceから読み込み
-		GameObject playerObject;
+		GameObject player;
 		GameObject[] characters;
 
 		public void Init()
 		{
-			playerObject = Resources.Load("Prefabs/Characters/Player.prefab") as GameObject;
+			LoadPlayer();
+			LoadEnemy();
 		}
-		public void InitEnemy()
+		public void LoadPlayer()
+		{
+			player = Resources.Load("Prefabs/Characters/Player") as GameObject;
+		}
+		public void LoadEnemy()
 		{
 			characters = Resources.LoadAll<GameObject>("Prefabs/Characters/Enemys");
 		}
 		public void InstantiateCharacters()
 		{
-			Instantiate(playerObject);
+			Instantiate(player);
 		}
+		//comment
 	}
 }
