@@ -9,7 +9,7 @@ namespace RogueLikeProject.MyLib
 	{
 		public int x;
 		public int z;
-		public static Coordinate operator+ (Coordinate coordinate,Direction dir)
+		public static Coordinate operator +(Coordinate coordinate, Direction dir)
 		{
 			switch (dir)
 			{
@@ -83,7 +83,7 @@ namespace RogueLikeProject.MyLib
 		{
 			List<Direction> directions = new List<Direction>();
 
-			foreach(Direction dir in Enum.GetValues(typeof(Direction)))
+			foreach (Direction dir in Enum.GetValues(typeof(Direction)))
 			{
 				directions.Add(dir);
 			}
@@ -133,7 +133,5 @@ namespace RogueLikeProject.Dungeon
 
 			return coordinate;
 		}
-
-
 	}
 }

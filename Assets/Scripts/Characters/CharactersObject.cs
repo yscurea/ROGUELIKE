@@ -8,10 +8,18 @@ namespace RogueLikeProject.Character
 	[System.Serializable]
 	public class CharactersObject : MonoBehaviour
 	{
-		[SerializeField]
+		// resourceから読み込み
 		GameObject playerObject;
-		List<Character> characters = new List<Character>();
+		GameObject[] characters;
 
+		public void Init()
+		{
+			playerObject = Resources.Load("Prefabs/Characters/Player.prefab") as GameObject;
+		}
+		public void InitEnemy()
+		{
+			characters = Resources.LoadAll<GameObject>("Prefabs/Characters/Enemys");
+		}
 		public void InstantiateCharacters()
 		{
 			Instantiate(playerObject);

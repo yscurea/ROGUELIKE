@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RogueLikeProject.MyLib;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,9 @@ namespace RogueLikeProject.Dungeon
 	public class DungeonDirector : MonoBehaviour
 	{
 		[SerializeField]
-		private int dungeonZ = 30;
+		int dungeonZ = 30;
 		[SerializeField]
-		private int dungeonX = 54;
+		int dungeonX = 54;
 
 		//定義場所を再考する
 		public static float sqareSize = 1.0f;
@@ -27,6 +28,12 @@ namespace RogueLikeProject.Dungeon
 				dungeonObject = GetComponent<DungeonObject>();
 			}
 			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap());
+		}
+
+		public Coordinate GetRandomCoordinate()
+		{
+			Coordinate tmp = new Coordinate { x = 0, z = 0 };
+			return tmp;
 		}
 	}
 }
