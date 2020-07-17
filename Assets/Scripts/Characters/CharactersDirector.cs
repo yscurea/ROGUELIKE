@@ -13,6 +13,8 @@ namespace RogueLikeProject.Character
 		void Start()
 		{
 			charactersObject = GetComponent<CharactersObject>();
+			Character.InitCharacters(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
+			CharacterPosition.InitCharactersPosition(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 			GameObject tmp = this.transform.root.gameObject;
 			dungeonDirector = this.transform.root.gameObject.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 			//charactersObject.InstantiateCharacters();

@@ -8,9 +8,8 @@ namespace RogueLikeProject.Dungeon
 	public class DungeonDirector : MonoBehaviour
 	{
 		[SerializeField]
-		int dungeonZ = 30;
-		[SerializeField]
-		int dungeonX = 54;
+		public int dungeonZ { get; } = 30;
+		public int dungeonX { get; } = 54;
 
 		//定義場所を再考する
 		public static float sqareSize = 1.0f;
