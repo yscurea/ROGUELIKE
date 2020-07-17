@@ -14,6 +14,7 @@ namespace RogueLikeProject.Dungeon
 	[System.Serializable]
 	public class DungeonGenerator
 	{
+		// DungeonDirectorにRoomの情報を受け渡す
 		private TerrainType[,] map;
 
 		[SerializeField]
