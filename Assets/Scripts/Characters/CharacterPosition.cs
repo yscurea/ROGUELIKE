@@ -19,8 +19,8 @@ namespace RogueLikeProject.Character
 
 		public bool InitPosition(Coordinate position)
 		{
-			if (charactersMap[position.z, position.x] != null)
-				return false;
+			// if (charactersMap[position.z, position.x] != null)
+			// return false;
 			this.coordinate = position;
 			return true;
 		}

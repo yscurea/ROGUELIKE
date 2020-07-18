@@ -18,10 +18,10 @@ namespace RogueLikeProject.Character
 		{
 			charactersObject = GetComponent<CharactersObject>();
 			// charactersObject.InstantiateCharacters();
-			Character.InitCharacters(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
-			CharacterPosition.InitCharactersPosition(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
+			// Character.InitCharacters(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
+			// CharacterPosition.InitCharactersPosition(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 
-			dungeonDirector = this.transform.root.gameObject.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
+			// dungeonDirector = this.transform.root.gameObject.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 		}
 		void GenerateCharacter(GameObject character)
 		{
@@ -29,6 +29,8 @@ namespace RogueLikeProject.Character
 			Coordinate crd = dungeonDirector.GetRandomCoordinate();
 			var tmp = Instantiate(character, new Vector3(crd.x, 0, crd.z), Quaternion.identity);
 			tmp.transform.parent = this.gameObject.transform;
+
+			character_num++;
 		}
 	}
 }

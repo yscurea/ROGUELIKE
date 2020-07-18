@@ -23,6 +23,7 @@ namespace RogueLikeProject.Character
 				new Vector3(crd.z * Dungeon.DungeonDirector.sqareSize, 0, crd.x * Dungeon.DungeonDirector.sqareSize),
 				Quaternion.identity
 			);
+
 			tmp.transform.parent = this.transform;
 
 			// Script上で位置初期化とキャラ生成

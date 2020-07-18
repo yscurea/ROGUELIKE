@@ -12,19 +12,16 @@ namespace RogueLikeProject.Character
 		ActEnd
 	}
 
-
 	public abstract class Character
 	{
 		protected Action nowAction = Action.Idling;
 		protected static Character[,] characters;
+		protected CharacterPosition position;
 		protected CharacterStatus status;
-
 		public static void InitCharacters(int z, int x)
 		{
 			characters = new Character[z, x];
 		}
 		public abstract bool Act();
-
 	}
-
 }

@@ -11,16 +11,16 @@ namespace RogueLikeProject.Dungeon
 		public int dungeonZ { get; } = 30;
 		public int dungeonX { get; } = 54;
 
-		//定義場所を再考する
 		public static float sqareSize = 1.0f;
 
 		[SerializeField]
 		DungeonGenerator dungeonGenerator;
 		DungeonObject dungeonObject;
 
+
 		public void InitDungeon(int floorNumber)
 		{
-			// floorNumberの値で出てくるキャラクターを変更する
+			// floorNumberの値で出てくるキャラクターを変更する?
 			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX);
 			if (dungeonObject is null)
 			{

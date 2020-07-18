@@ -18,11 +18,12 @@ namespace RogueLikeProject.Character
 			LoadPlayer();
 			LoadEnemy();
 		}
+
 		public void LoadPlayer()
 		{
 			player = Resources.Load("Prefabs/Characters/Player") as GameObject;
 		}
-		
+
 		// 階層によって読み込むキャラを変更する？
 		public void LoadEnemy()
 		{
