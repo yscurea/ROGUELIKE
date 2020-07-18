@@ -21,14 +21,10 @@ namespace RogueLikeProject.Dungeon
 		private void Start()
 		{
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
-			//characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
-			if (dungeonDirector == null)
-			{
-				Debug.Log("null");
-			}
-			this.GenerateMap();
-			//InitCharacter();
-			//player = CharacterDirector.GetPlayer();
+			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
+
+			dungeonDirector.InitDungeon(floorNumber);
+			characterDirector.Init();
 		}
 		private void Update()
 		{
@@ -42,13 +38,6 @@ namespace RogueLikeProject.Dungeon
 				// 次のマップ生成
 			}
 			*/
-		}
-
-		private void GenerateMap()
-		{
-			dungeonDirector.InitDungeon(++floorNumber);
-
-			//characterDirector.InitPosition(dungeonDirector.getDungeonInfo);
 		}
 	}
 }

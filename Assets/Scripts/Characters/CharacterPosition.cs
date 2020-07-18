@@ -16,6 +16,14 @@ namespace RogueLikeProject.Character
 		{
 			charactersMap = new CharacterPosition[z, x];
 		}
+
+		public bool InitPosition(Coordinate position)
+		{
+			if (charactersMap[position.z, position.x] != null)
+				return false;
+			this.coordinate = position;
+			return true;
+		}
 		public bool SwapPosition(Coordinate targetPosition)
 		{
 			// swap(ref charactersMap[targetPosition.z, targetPosition.x], ref charactersMap[coordinate.z, coordinate.x]);

@@ -6,12 +6,16 @@ namespace RogueLikeProject.Character
 {
 	public enum Action
 	{
-
+		Idling,
+		ActStart,
+		InAct,
+		ActEnd
 	}
 
 
 	public abstract class Character
 	{
+		protected Action nowAction = Action.Idling;
 		protected static Character[,] characters;
 		protected CharacterStatus status;
 
