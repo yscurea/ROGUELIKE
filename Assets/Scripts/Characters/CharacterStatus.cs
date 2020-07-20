@@ -9,7 +9,7 @@ namespace RogueLikeProject.Character
 		void ApplyDamage(float damage);
 	}
 
-	abstract public class CharacterStatus : IDamageable
+	abstract public class CharacterStatus
 	{
 		protected float hp;
 		protected float MaxHp;
@@ -19,6 +19,5 @@ namespace RogueLikeProject.Character
 		protected float attackPower;
 		protected float defensePower;
 
-		public abstract void ApplyDamage(float damage);
 	}
 }

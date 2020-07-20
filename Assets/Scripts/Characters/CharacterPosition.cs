@@ -9,31 +9,33 @@ namespace RogueLikeProject.Character
 {
 	public class CharacterPosition
 	{
-		static CharacterPosition[,] creaturesMap;
+		static CharacterPosition[,] charactersMap;
 		Coordinate coordinate;
 
-		public static void InitCreaturesPosition(int z, int x)
+		public static void InitCharactersPosition(int z, int x)
 		{
-			creaturesMap = new CharacterPosition[z, x];
+			charactersMap = new CharacterPosition[z, x];
 		}
-		public void SwapPosition(Coordinate targetPosition)
+
+		public bool InitPosition(Coordinate position)
 		{
-			void swap<T>(ref T lhs, ref T rhs)
-			{
-				T tmp;
-				tmp = lhs;
-				lhs = rhs;
-				rhs = tmp;
-			}
-			swap(ref creaturesMap[targetPosition.z, targetPosition.x], ref creaturesMap[coordinate.z, coordinate.x]);
+			// if (charactersMap[position.z, position.x] != null)
+			// return false;
+			this.coordinate = position;
+			return true;
+		}
+		public bool SwapPosition(Coordinate targetPosition)
+		{
+			// swap(ref charactersMap[targetPosition.z, targetPosition.x], ref charactersMap[coordinate.z, coordinate.x]);
+			return true;
 		}
 		public Coordinate GetPosition()
 		{
-			return coordinate;
+			return this.coordinate;
 		}
 		public void UpdatePosition(Direction dir)
 		{
-			coordinate += dir;
+			this.coordinate += dir;
 		}
 	}
 }

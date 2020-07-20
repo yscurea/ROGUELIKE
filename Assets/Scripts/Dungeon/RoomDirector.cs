@@ -8,10 +8,6 @@ namespace RogueLikeProject.Dungeon
 	public class RoomDirector
 	{
 		Dictionary<int, Room> rooms;
-		public void InitRomms(Dictionary<int, Room> rooms)
-		{
-			this.rooms = rooms;
-		}
 		public Coordinate GetRandomCoordinate()
 		{
 			Room room = rooms[UnityEngine.Random.Range(0, rooms.Count)];

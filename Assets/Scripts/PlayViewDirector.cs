@@ -10,45 +10,39 @@ namespace RogueLikeProject.Dungeon
 {
 	public class PlayViewDirector : MonoBehaviour
 	{
-		//Scene deadScene;
-		//Scene completeScene;
 		CharactersDirector characterDirector;
-		Player player;
 		DungeonDirector dungeonDirector;
+		Player player;
 
 		private int floorNumber = 1;
 
 		private void Start()
 		{
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
-			//characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
-			if (dungeonDirector == null)
-			{
-				Debug.Log("null");
-			}
-			this.GenerateMap();
-			//InitCharacter();
-			//player = CharacterDirector.GetPlayer();
+			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
+
+			dungeonDirector.InitDungeon(floorNumber);
+			characterDirector.Init();
 		}
 		private void Update()
 		{
-			/*
-			if (player.isDead())
-			{
-				// 死亡画面に遷移
-			}
-			if (player.transitionNextFloor())
-			{
-				// 次のマップ生成
-			}
-			*/
+			JudgeGameEnd();
+			// characterDirector.キャラ操作の全ての処理をここで
 		}
 
-		private void GenerateMap()
-		{
-			dungeonDirector.InitDungeon(++floorNumber);
 
-			//characterDirector.InitPosition(dungeonDirector.getDungeonInfo);
+		void JudgeGameEnd()
+		{
+			/*
+			if (//playerが操作不能状態(HP0etc)になったら)
+			{
+				SceneManager.LoadScene("deadScene");
+			}
+			if (//playerがゴールしたら)
+			{
+				SceneManager.LoadScene("resultScene");
+			}
+			/**/
 		}
 	}
 }
