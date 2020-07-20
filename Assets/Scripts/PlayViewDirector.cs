@@ -10,11 +10,9 @@ namespace RogueLikeProject.Dungeon
 {
 	public class PlayViewDirector : MonoBehaviour
 	{
-		//Scene deadScene;
-		//Scene completeScene;
 		CharactersDirector characterDirector;
-		Player player;
 		DungeonDirector dungeonDirector;
+		Player player;
 
 		private int floorNumber = 1;
 
@@ -28,16 +26,23 @@ namespace RogueLikeProject.Dungeon
 		}
 		private void Update()
 		{
+			JudgeGameEnd();
+			// characterDirector.キャラ操作の全ての処理をここで
+		}
+
+
+		void JudgeGameEnd()
+		{
 			/*
-			if (player.isDead())
+			if (//playerが操作不能状態(HP0etc)になったら)
 			{
-				// 死亡画面に遷移
+				SceneManager.LoadScene("deadScene");
 			}
-			if (player.transitionNextFloor())
+			if (//playerがゴールしたら)
 			{
-				// 次のマップ生成
+				SceneManager.LoadScene("resultScene");
 			}
-			*/
+			/**/
 		}
 	}
 }

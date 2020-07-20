@@ -31,11 +31,11 @@ namespace RogueLikeProject.Character
 		}
 		public Coordinate GetPosition()
 		{
-			return coordinate;
+			return this.coordinate;
 		}
 		public void UpdatePosition(Direction dir)
 		{
-			coordinate += dir;
+			this.coordinate += dir;
 		}
 	}
 }

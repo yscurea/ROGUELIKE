@@ -32,5 +32,10 @@ namespace RogueLikeProject.Character
 
 			character_num++;
 		}
+
+		public void Input()
+		{
+
+		}
 	}
 }

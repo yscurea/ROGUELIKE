@@ -15,8 +15,10 @@ namespace RogueLikeProject.Character
 		{
 			CharacterPosition.InitCharactersPosition(Zsize, Xsize);
 		}
-		public void GenerateCharacter(GameObject character, Coordinate crd)
+		public bool GenerateCharacter(GameObject character, Coordinate crd)
 		{
+			// positionもここで生成する
+			// characterもここで選択する
 			// 実体生成
 			GameObject tmp = Instantiate(
 				character,
@@ -30,6 +32,7 @@ namespace RogueLikeProject.Character
 			Character ch = tmp.GetComponent<Character>();
 			CharacterPosition position = tmp.GetComponent<CharacterPosition>();
 			position.InitPosition(crd);
+			return true;
 		}
 	}
 }
