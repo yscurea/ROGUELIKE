@@ -14,7 +14,7 @@ namespace RogueLikeProject.Dungeon
 		public static float sqareSize = 1.0f;
 
 		[SerializeField]
-		DungeonGenerator dungeonGenerator;
+		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 
 		RoomDirector roomDirector = new RoomDirector();
