@@ -17,8 +17,7 @@ namespace RogueLikeProject.Dungeon
 		DungeonGenerator dungeonGenerator;
 		DungeonObject dungeonObject;
 
-		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
-
+		RoomDirector roomDirector = new RoomDirector();
 
 		// 初期化を行う．再生成ではない
 		public void InitDungeon(int floorNumber)
