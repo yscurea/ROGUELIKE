@@ -5,8 +5,12 @@ using UnityEngine;
 
 namespace RogueLikeProject.Character
 {
-	public abstract class CharacterAnimator : MonoBehaviour
+	public class PlayerController : MonoBehaviour
 	{
-		// それぞれのcharaにアタッチして各々に動作させる．
+		void Update()
+		{
+			// 入力受けとり
+
+		}
 	}
 }
