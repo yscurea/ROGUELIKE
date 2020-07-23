@@ -6,19 +6,19 @@ using UnityEngine;
 namespace RogueLikeProject.Dungeon
 {
 	using MyLib;
-	enum GenerationMethod
-	{
-		Random,
-		Open
-	}
 	[System.Serializable]
 	public class DungeonGenerator
 	{
-		// DungeonDirectorにRoomの情報を受け渡す
-		private TerrainType[,] map;
+		// パラメータとメソッドが多すぎる．class分割を検討
 
-		[SerializeField]
-		GenerationMethod generationMethod = GenerationMethod.Random;
+		// DungeonDirectorにRoomの情報を受け渡す
+
+		// 本体
+		TerrainType[,] map;
+
+		// mapのサイズ
+		int dungeonXSsize = 54;
+		int dungeonZSize = 30;
 
 		[SerializeField, Range(0, 10)]
 		int frameBreadth = 1;
@@ -31,7 +31,7 @@ namespace RogueLikeProject.Dungeon
 		[SerializeField, Range(5, 100)]
 		int minRoomSize = 5;
 
-		Rect mainMap;//map without frame
+		Rect mainMap; //map without frame
 		int maxEntranceNum = 3;
 		int minEntranceNum = 1;
 		Queue<Node> nodes;
@@ -41,40 +41,31 @@ namespace RogueLikeProject.Dungeon
 		List<Rect> indivisibleRects;
 		System.Random random;
 
-		Dictionary<int, Room> rooms = new Dictionary<int, Room>();
-		RoomDirector roomDirector;
 
-		public DungeonGenerator(int z, int x)
+		public TerrainType[,] GenerateMap(Dictionary<int, Room> rooms)
 		{
-			map = new TerrainType[z, x];
-			for (var zi = 0; zi < z; zi++)
-			{
-				for (var xi = 0; xi < x; xi++)
-				{
+			map = new TerrainType[this.dungeonZSize, this.dungeonXSsize];
+			for (var zi = 0; zi < this.dungeonZSize; zi++)
+				for (var xi = 0; xi < dungeonXSsize; xi++)
 					this.map[zi, xi] = TerrainType.Wall;
-				}
-			}
 
-			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = x - 1 - frameBreadth, z = z - 1 - frameBreadth } };
+			// frameを除いた実際に使用できる範囲のmapを定義する
+			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = this.dungeonXSsize - 1 - frameBreadth, z = this.dungeonZSize - 1 - frameBreadth } };
 
 			splittableRects = new List<Rect>();
 			indivisibleRects = new List<Rect>();
 			nodes = new Queue<Node>();
 			random = new System.Random();
+
 			splittableRects.Add(mainMap);
-		}
-		public TerrainType[,] GenerateMap()
-		{
+
 			//分割する回数
 			splitFrequency = random.Next(minRoomNum, maxRoomNum);
 			splitFrequency -= 1;
-			while (splitFrequency > 0 && splittableRects.Count != 0)//divide map as much as possible
-			{
+			// 分割できるだけ分割する
+			while (splitFrequency > 0 && splittableRects.Count != 0)
 				if (DivideMap())
-				{
 					splitFrequency--;
-				}
-			}
 			indivisibleRects.AddRange(splittableRects);
 			while (indivisibleRects.Count > 0)
 			{
@@ -90,45 +81,26 @@ namespace RogueLikeProject.Dungeon
 				{
 					var limit = 20;
 					while (GenerateEntrance(room.Value, Random.RandomFourDirection()) == false && limit-- > 0)
-					{
-
-					}
+					{ }
 				}
 			}
 			while (nodes.Count != 0)
-			{
 				GenerateWay(nodes.Dequeue(), true, false, TerrainType.Way, TerrainType.InsideWall, TerrainType.Wall);
-			}
 
+			// splitterを壁で埋める
 			for (var hi = 0; hi < map.GetLength(0); hi++)
-			{
 				for (var wi = 0; wi < map.GetLength(1); ++wi)
-				{
 					if (map[hi, wi] == TerrainType.Splitter)
-					{
 						map[hi, wi] = TerrainType.Wall;
-					}
-				}
-			}
+
+			// 内壁を埋める
 			for (var hi = 0; hi < map.GetLength(0); ++hi)
-			{
 				for (var wi = 0; wi < map.GetLength(1); ++wi)
-				{
 					if (map[hi, wi] == TerrainType.Way)
-					{
 						for (int dy = -1; dy <= 1; ++dy)
-						{
 							for (int dx = -1; dx <= 1; ++dx)
-							{
 								if (map[hi + dy, wi + dx] == TerrainType.Wall)
-								{
 									map[hi + dy, wi + dx] = TerrainType.InsideWall;
-								}
-							}
-						}
-					}
-				}
-			}
 
 			return map;
 		}
@@ -179,7 +151,7 @@ namespace RogueLikeProject.Dungeon
 				return true;
 			}
 		}
-		public void GenerateRoom(Rect rect, Dictionary<int, Room> rooms)
+		void GenerateRoom(Rect rect, Dictionary<int, Room> rooms)
 		{
 			Rect roomRect = new Rect();
 			roomRect.start.x = random.Next(rect.start.x, rect.end.x - minRoomSize + 1);
@@ -191,13 +163,9 @@ namespace RogueLikeProject.Dungeon
 				for (var wi = roomRect.start.x; wi <= roomRect.end.x; ++wi)
 				{
 					if (wi == roomRect.start.x || wi == roomRect.end.x || hi == roomRect.start.z || hi == roomRect.end.z)
-					{
 						map[hi, wi] = TerrainType.InsideWall;
-					}
 					else
-					{
 						map[hi, wi] = TerrainType.Room;
-					}
 				}
 			}
 			rooms[roomNowItr] = new Room() { rect = roomRect, entrances = new List<Coordinate>() };
@@ -213,7 +181,7 @@ namespace RogueLikeProject.Dungeon
 			}
 			roomNowItr += 1;
 		}
-		private bool GenerateEntrance(Room room, Direction dir)
+		bool GenerateEntrance(Room room, Direction dir)
 		{
 			Coordinate point = new Coordinate();
 			switch (dir)
@@ -258,7 +226,7 @@ namespace RogueLikeProject.Dungeon
 			else
 				return false;
 		}
-		private bool GenerateWay(Node node, bool isEnqueue, bool isIncludeDestination, params TerrainType[] destination)
+		bool GenerateWay(Node node, bool isEnqueue, bool isIncludeDestination, params TerrainType[] destination)
 		{
 			int dx = 0, dz = 0;
 			bool CheckDestination(TerrainType nowPosition)

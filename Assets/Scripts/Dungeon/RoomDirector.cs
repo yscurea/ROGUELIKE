@@ -7,7 +7,14 @@ namespace RogueLikeProject.Dungeon
 	using MyLib;
 	public class RoomDirector
 	{
-		Dictionary<int, Room> rooms;
+		// カプセル化を検討
+		public Dictionary<int, Room> rooms;
+
+
+		public RoomDirector()
+		{
+			rooms = new Dictionary<int, Room>();
+		}
 		public Coordinate GetRandomCoordinate()
 		{
 			Room room = rooms[UnityEngine.Random.Range(0, rooms.Count)];

@@ -14,28 +14,25 @@ namespace RogueLikeProject.Dungeon
 		public static float sqareSize = 1.0f;
 
 		[SerializeField]
-		DungeonGenerator dungeonGenerator;
+		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 
 		RoomDirector roomDirector = new RoomDirector();
 
-		// 初期化を行う．再生成ではない
 		public void InitDungeon(int floorNumber)
 		{
 			// floorNumberの値で出てくるキャラクターを変更する?
-			dungeonGenerator = new DungeonGenerator(dungeonZ, dungeonX);
 			if (dungeonObject is null)
 			{
 				dungeonObject = GetComponent<DungeonObject>();
 			}
-			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap());
+			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap(roomDirector.rooms));
 		}
 
 		// 部屋のランダムな座標を得る．通路の座標は返さない
 		public Coordinate GetRandomCoordinate()
 		{
-			Coordinate tmp = new Coordinate { x = 0, z = 0 };
-			return tmp;
+			return roomDirector.GetRandomCoordinate();
 		}
 	}
 }
