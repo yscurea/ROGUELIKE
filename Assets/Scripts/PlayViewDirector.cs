@@ -18,6 +18,7 @@ namespace RogueLikeProject.Dungeon
 
 		void Start()
 		{
+			// 検討:MonoBehaviourの継承の必要性がない
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
 
