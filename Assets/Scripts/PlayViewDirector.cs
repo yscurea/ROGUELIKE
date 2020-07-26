@@ -42,6 +42,7 @@ namespace RogueLikeProject.Dungeon
 			{
 				SceneManager.LoadScene("resultScene");
 			}
+			// 次のステージへの遷移はシーン再読み込み、もしくはパラメータ保持の関係で画面暗転再初期化
 			/**/
 		}
 	}
