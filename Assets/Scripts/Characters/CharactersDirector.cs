@@ -17,7 +17,7 @@ namespace RogueLikeProject.Character
 		public void Init()
 		{
 			charactersObject = GetComponent<CharactersObject>();
-			// charactersObject.InstantiateCharacters();
+			charactersObject.InstantiateCharacters();
 			// Character.InitCharacters(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 			// CharacterPosition.InitCharactersPosition(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 

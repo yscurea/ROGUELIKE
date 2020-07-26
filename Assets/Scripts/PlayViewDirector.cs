@@ -16,7 +16,7 @@ namespace RogueLikeProject.Dungeon
 
 		private int floorNumber = 1;
 
-		private void Start()
+		void Start()
 		{
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
@@ -24,7 +24,7 @@ namespace RogueLikeProject.Dungeon
 			dungeonDirector.InitDungeon(floorNumber);
 			characterDirector.Init();
 		}
-		private void Update()
+		void Update()
 		{
 			JudgeGameEnd();
 			// characterDirector.キャラ操作の全ての処理をここで

@@ -13,7 +13,6 @@ namespace RogueLikeProject.Dungeon
 
 		public static float sqareSize = 1.0f;
 
-		[SerializeField]
 		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 

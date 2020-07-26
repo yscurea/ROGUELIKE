@@ -31,6 +31,7 @@ namespace RogueLikeProject.Character
 		}
 		public void InstantiateCharacters()
 		{
+			this.LoadPlayer();
 			Instantiate(player);
 		}
 	}
