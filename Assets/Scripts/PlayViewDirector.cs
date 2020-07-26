@@ -1,10 +1,10 @@
-﻿using RogueLikeProject.Character;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using RogueLikeProject.Character;
 // ここが実際のゲームプレイ中の画面のスクリプトを全て制御する
 namespace RogueLikeProject.Dungeon
 {

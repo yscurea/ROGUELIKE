@@ -8,8 +8,8 @@ namespace RogueLikeProject.Character
 {
 	public class CharactersDirector : MonoBehaviour
 	{
-		int character_num = 0;
-		int max_character_num = 10;
+		int enemyNum = 0;
+		int maxEnemyNum = 10;
 		CharactersObject charactersObject;
 		CharacterGenerator characterGenerator;
 		DungeonDirector dungeonDirector;
@@ -17,7 +17,7 @@ namespace RogueLikeProject.Character
 		public void Init()
 		{
 			charactersObject = GetComponent<CharactersObject>();
-			charactersObject.InstantiateCharacters();
+			// charactersObject.InstantiateCharacters();
 			// Character.InitCharacters(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 			// CharacterPosition.InitCharactersPosition(dungeonDirector.dungeonZ, dungeonDirector.dungeonX);
 
@@ -30,7 +30,7 @@ namespace RogueLikeProject.Character
 			var tmp = Instantiate(character, new Vector3(crd.x, 0, crd.z), Quaternion.identity);
 			tmp.transform.parent = this.gameObject.transform;
 
-			character_num++;
+			enemyNum++;
 		}
 
 		public void Input()

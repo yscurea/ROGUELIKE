@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+using RogueLikeProject.MyLib;
 namespace RogueLikeProject.Character
 {
 	[System.Serializable]
@@ -13,26 +13,36 @@ namespace RogueLikeProject.Character
 		GameObject player;
 		GameObject[] characters;
 
+		// GameObject[] Ally?
+
 		public void Init()
 		{
+			/// 管理するオブジェクトのロード
 			LoadPlayer();
 			LoadEnemy();
 		}
 
 		public void LoadPlayer()
 		{
+			// parameterの引継ぎをどうするか考える
 			player = Resources.Load("Prefabs/Characters/Player") as GameObject;
 		}
 
 		// 階層によって読み込むキャラを変更する？
-		public void LoadEnemy()
+		public void LoadEnemy(/*path?*/)
 		{
 			characters = Resources.LoadAll<GameObject>("Prefabs/Characters/Enemys");
 		}
-		public void InstantiateCharacters()
+		public void InstantiateCharacters(Coordinate coordinate, GameObject character)
 		{
-			this.LoadPlayer();
-			Instantiate(player);
+			Instantiate(
+				character,
+				new Vector3(
+					coordinate.x * Dungeon.DungeonDirector.sqareSize,
+					0,
+					coordinate.z * Dungeon.DungeonDirector.sqareSize),
+				Quaternion.identity
+			);
 		}
 	}
 }
