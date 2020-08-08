@@ -13,7 +13,6 @@ namespace RogueLikeProject.Character
 		CharactersObject charactersObject;
 		CharacterGenerator characterGenerator;
 		DungeonDirector dungeonDirector;
-
 		public void Init()
 		{
 			charactersObject = GetComponent<CharactersObject>();
@@ -32,7 +31,6 @@ namespace RogueLikeProject.Character
 
 			enemyNum++;
 		}
-
 		public void Input()
 		{
 
