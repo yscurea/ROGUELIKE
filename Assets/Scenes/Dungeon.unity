@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 873641}
   - component: {fileID: 873640}
   - component: {fileID: 873642}
+  - component: {fileID: 873643}
   m_Layer: 0
   m_Name: DungeonDirector
   m_TagString: Untagged
@@ -151,12 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c0d526842598546a1f8ef892965172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonGenerator:
-    frameBreadth: 1
-    maxRoomNum: 57
-    minRoomNum: 5
-    maxRoomSize: 47
-    minRoomSize: 6
 --- !u!4 &873641
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +176,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43ba6c91fd93e9847af5d30856c99234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &873643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac19a3b8f6d48f429a83e7e3307a92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &178001340
