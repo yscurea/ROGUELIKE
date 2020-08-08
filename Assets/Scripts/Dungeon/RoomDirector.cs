@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RogueLikeProject.Dungeon
 {
 	using MyLib;
-	public class RoomDirector
+	public class RoomDirector : MonoBehaviour
 	{
 		// カプセル化を検討
 		public Dictionary<int, Room> rooms;

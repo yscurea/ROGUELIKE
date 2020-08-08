@@ -16,7 +16,7 @@ namespace RogueLikeProject.Dungeon
 		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 
-		RoomDirector roomDirector = new RoomDirector();
+		RoomDirector roomDirector;
 
 		public void InitDungeon(int floorNumber)
 		{
@@ -24,6 +24,10 @@ namespace RogueLikeProject.Dungeon
 			if (dungeonObject is null)
 			{
 				dungeonObject = GetComponent<DungeonObject>();
+			}
+			if (roomDirector is null)
+			{
+				roomDirector = GetComponent<RoomDirector>();
 			}
 			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap(roomDirector.rooms));
 		}
