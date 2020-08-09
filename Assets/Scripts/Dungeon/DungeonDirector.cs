@@ -16,26 +16,15 @@ namespace RogueLikeProject.Dungeon
 		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 
-		RoomDirector roomDirector;
 
-		public void InitDungeon(int floorNumber)
+		public void InitDungeon(int floorNumber, RoomDirector roomDirector)
 		{
 			// floorNumberの値で出てくるキャラクターを変更する?
 			if (dungeonObject is null)
 			{
 				dungeonObject = GetComponent<DungeonObject>();
 			}
-			if (roomDirector is null)
-			{
-				roomDirector = GetComponent<RoomDirector>();
-			}
 			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap(roomDirector.rooms));
-		}
-
-		// 部屋のランダムな座標を得る．通路の座標は返さない
-		public Coordinate GetRandomCoordinate()
-		{
-			return roomDirector.GetRandomCoordinate();
 		}
 	}
 }

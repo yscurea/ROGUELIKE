@@ -12,6 +12,7 @@ namespace RogueLikeProject.Dungeon
 	{
 		CharactersDirector characterDirector;
 		DungeonDirector dungeonDirector;
+		RoomDirector roomDirector;
 		Player player;
 
 		private int floorNumber = 1;
@@ -21,8 +22,9 @@ namespace RogueLikeProject.Dungeon
 			// 検討:MonoBehaviourの継承の必要性がない
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
+			roomDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<RoomDirector>();
 
-			dungeonDirector.InitDungeon(floorNumber);
+			dungeonDirector.InitDungeon(floorNumber, roomDirector);
 			characterDirector.Init();
 		}
 		void Update()

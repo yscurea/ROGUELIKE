@@ -25,9 +25,9 @@ namespace RogueLikeProject.Character
 		void GenerateCharacter(GameObject character)
 		{
 			// ランダム座標にcharaを生成
-			Coordinate crd = dungeonDirector.GetRandomCoordinate();
-			var tmp = Instantiate(character, new Vector3(crd.x, 0, crd.z), Quaternion.identity);
-			tmp.transform.parent = this.gameObject.transform;
+			// Coordinate crd = dungeonDirector.GetRandomCoordinate();
+			// var tmp = Instantiate(character, new Vector3(crd.x, 0, crd.z), Quaternion.identity);
+			// tmp.transform.parent = this.gameObject.transform;
 
 			enemyNum++;
 		}
