@@ -16,15 +16,17 @@ namespace RogueLikeProject.Dungeon
 		DungeonGenerator dungeonGenerator = new DungeonGenerator();
 		DungeonObject dungeonObject;
 
+		TerrainType[,] mainMap;
+		RoomDirector roomDirector;
 
-		public void InitDungeon(int floorNumber, RoomDirector roomDirector)
+
+		public void InitDungeon(int floorNumber)
 		{
 			// floorNumberの値で出てくるキャラクターを変更する?
-			if (dungeonObject is null)
-			{
-				dungeonObject = GetComponent<DungeonObject>();
-			}
-			dungeonObject.DungeonInstantiate(dungeonGenerator.GenerateMap(roomDirector.rooms));
+			dungeonObject = GetComponent<DungeonObject>();
+			roomDirector = new RoomDirector();
+			mainMap = dungeonGenerator.GenerateMap(roomDirector.rooms);
+			dungeonObject.DungeonInstantiate(mainMap);
 		}
 	}
 }
