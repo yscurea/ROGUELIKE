@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace RogueLikeProject.Character
 {
-	public class PlayerController : MonoBehaviour
+	public class PlayerController
 	{
-		void Update()
+		void Input()
 		{
-			// 入力受けとり
 
 		}
 	}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Object
+namespace RogueLikeProject
 {
 	enum Layer
 	{
@@ -14,8 +14,8 @@ namespace RogueLikeProject.Object
 	}
 	public class Object
 	{
-		static Object[,,] objects;
+		static Object[,,] objects { get; }
 
-		// define here for  common functions
+		// define here for  common functions.
 	}
 }

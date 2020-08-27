@@ -12,8 +12,9 @@ namespace RogueLikeProject.Character
 		ActEnd
 	}
 
-	public abstract class Character : RogueLikeProject.Object.Object
+	public abstract class Character : RogueLikeProject.Object
 	{
+		// animation controll
 		protected Action nowAction = Action.Idling;
 		protected static Character[,] characters;
 		protected CharacterPosition position;
