@@ -5,17 +5,21 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
-	public class DungeonObject : MonoBehaviour
+	public class DungeonObject
 	{
+
+		// Object loaded ares random?
 		GameObject wall, floor;
 
-		public void DungeonInstantiate(TerrainType[,] dungeonInfo)
+		public void Init()
+		{
+			// this is unuseless now.
+		}
+		public void DungeonInstantiate(GameObject parent, TerrainType[,] dungeonInfo)
 		{
 			wall = (GameObject)Resources.Load("Prefabs/DungeonObjects/Normal/Wall");
 			if (wall is null)
-			{
 				Debug.Log("wall is null");
-			}
 			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
 			{
 				for (int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
@@ -29,7 +33,7 @@ namespace RogueLikeProject.Dungeon
 							break;
 						case TerrainType.InsideWall:
 						case TerrainType.Wall:
-							tmp = Instantiate(
+							tmp = GameObject.Instantiate(
 								wall,
 								new Vector3(
 									xi * DungeonDirector.sqareSize,
@@ -38,7 +42,7 @@ namespace RogueLikeProject.Dungeon
 								),
 								Quaternion.identity
 							);
-							tmp.transform.parent = this.transform;
+							tmp.transform.parent = parent.transform;
 							break;
 						default:
 							break;

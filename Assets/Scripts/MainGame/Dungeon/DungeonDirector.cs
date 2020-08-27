@@ -7,26 +7,28 @@ namespace RogueLikeProject.Dungeon
 {
 	public class DungeonDirector : MonoBehaviour
 	{
-		// ダンジョンのサイズ可変にする?
+		// Is dungeon size variabillity?
 		public int dungeonZ { get; } = 30;
 		public int dungeonX { get; } = 54;
 
 		public static float sqareSize = 1.0f;
 
 		DungeonGenerator dungeonGenerator = new DungeonGenerator();
-		DungeonObject dungeonObject;
+		DungeonObject dungeonObject = new DungeonObject();
 
 		TerrainType[,] mainMap;
 		RoomDirector roomDirector;
 
 
-		public void InitDungeon(int floorNumber)
+		public void Init(int floorNumber)
 		{
-			// floorNumberの値で出てくるキャラクターを変更する?
-			dungeonObject = GetComponent<DungeonObject>();
+			// Depends on floorNumber
 			roomDirector = new RoomDirector();
 			mainMap = dungeonGenerator.GenerateMap(roomDirector.rooms);
-			dungeonObject.DungeonInstantiate(mainMap);
+
+			dungeonObject.Init();
+			dungeonObject.DungeonInstantiate(this.gameObject, mainMap);
 		}
+
 	}
 }

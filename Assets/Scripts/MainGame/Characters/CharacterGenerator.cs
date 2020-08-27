@@ -6,7 +6,7 @@ using RogueLikeProject.MyLib;
 
 namespace RogueLikeProject.Character
 {
-	public class CharacterGenerator : MonoBehaviour
+	public class CharacterGenerator
 	{
 		CharactersObject charactersObject;
 		CharacterPosition characterPosition;
@@ -15,12 +15,11 @@ namespace RogueLikeProject.Character
 		{
 			CharacterPosition.InitCharactersPosition(Zsize, Xsize);
 		}
-		public bool GenerateCharacter(GameObject character, Coordinate crd)
+		public bool GenerateCharacter()
 		{
-			// positionもここで生成する
-			// characterもここで選択する
-			// 実体生成
-			GameObject tmp = Instantiate(
+			GameObject character = charactersObject.GetRandomObject();
+			MyLib.Coordinate crd = characterPosition.GetRandomCoordinate();
+			GameObject tmp = GameObject.Instantiate(
 				character,
 				new Vector3(crd.z * Dungeon.DungeonDirector.sqareSize, 0, crd.x * Dungeon.DungeonDirector.sqareSize),
 				Quaternion.identity

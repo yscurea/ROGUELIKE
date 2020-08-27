@@ -6,20 +6,28 @@ using UnityEngine;
 
 namespace RogueLikeProject.Character
 {
-	public class CharactersDirector : MonoBehaviour
+	public class CharactersDirector
 	{
 		int enemyNum = 0;
 		int maxEnemyNum = 10;
 		CharactersObject charactersObject;
 		CharacterGenerator characterGenerator;
-		DungeonDirector dungeonDirector;
 		public void Init()
 		{
-		}
-		void GenerateCharacter(GameObject character)
-		{
+			// Instantiate player object
 
-			enemyNum++;
+			// Instantiate enemy character
+			while (maxEnemyNum > enemyNum)
+			{
+				charactersObject.InstantiateCharacters();
+			}
+		}
+		public void Update()
+		{
+			if (enemyNum < maxEnemyNum)
+			{
+				charactersObject.InstantiateCharacters();
+			}
 		}
 	}
 }

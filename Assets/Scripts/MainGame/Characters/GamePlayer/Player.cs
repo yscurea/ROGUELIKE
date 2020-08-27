@@ -8,10 +8,8 @@ namespace RogueLikeProject.Character
 	{
 		public override bool Act()
 		{
-			//ターンが経過しない行動をしたときは
-			//return false;
-			//ターンが経過する行動をしたときに
-			return true;
+			return false;
+			// return true when the turn has passed.
 		}
 
 	}

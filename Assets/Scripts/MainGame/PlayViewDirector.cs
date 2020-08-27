@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using RogueLikeProject.Character;
-// ここが実際のゲームプレイ中の画面のスクリプトを全て制御する
 namespace RogueLikeProject.Dungeon
 {
 	public class PlayViewDirector : MonoBehaviour
@@ -22,28 +21,14 @@ namespace RogueLikeProject.Dungeon
 			dungeonDirector = this.transform.Find("DungeonDirector").gameObject.GetComponent<DungeonDirector>();
 			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
 
-			dungeonDirector.InitDungeon(floorNumber);
+			dungeonDirector.Init(floorNumber);
 			characterDirector.Init();
 		}
 		void Update()
 		{
-			JudgeGameEnd();
+			characterDirector.Update();
+			dungeonDirector.Update();
 		}
 
-
-		void JudgeGameEnd()
-		{
-			/*
-			if (//playerが操作不能状態(HP0etc)になったら)
-			{
-				SceneManager.LoadScene("deadScene");
-			}
-			if (//playerがゴールしたら)
-			{
-				SceneManager.LoadScene("resultScene");
-			}
-			// 次のステージへの遷移はシーン再読み込み、もしくはパラメータ保持の関係で画面暗転再初期化
-			/**/
-		}
 	}
 }
