@@ -12,7 +12,7 @@ namespace RogueLikeProject.Character
 		ActEnd
 	}
 
-	public abstract class Character
+	public abstract class Character : RogueLikeProject.Object.Object
 	{
 		protected Action nowAction = Action.Idling;
 		protected static Character[,] characters;

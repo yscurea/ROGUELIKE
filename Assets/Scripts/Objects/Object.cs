@@ -15,10 +15,7 @@ namespace RogueLikeProject.Object
 	public class Object
 	{
 		static Object[,,] objects;
-	}
 
-	public abstract class Object2 : Object
-	{
-
+		// define here for  common functions
 	}
 }
