@@ -23,7 +23,7 @@ namespace RogueLikeProject.Dungeon
 			characterDirector = this.transform.Find("CharactersDirector").gameObject.GetComponent<CharactersDirector>();
 
 			dungeonDirector.InitDungeon(floorNumber);
-			characterDirector.InitCharacters();
+			characterDirector.Init();
 		}
 		void Update()
 		{
