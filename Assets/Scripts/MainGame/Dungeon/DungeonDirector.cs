@@ -13,21 +13,25 @@ namespace RogueLikeProject.Dungeon
 
 		public static float sqareSize = 1.0f;
 
-		DungeonGenerator dungeonGenerator = new DungeonGenerator();
-		DungeonObject dungeonObject = new DungeonObject();
-
+		Map.MapGenerator mapGenerator = new Map.MapGenerator();
+		Map.MapObjectManager mapObjectManager = new Map.MapObjectManager();
 		TerrainType[,] mainMap;
-		RoomDirector roomDirector;
-
+		Map.RoomDirector roomDirector;
 
 		public void Init(int floorNumber)
 		{
 			// Depends on floorNumber
-			roomDirector = new RoomDirector();
-			mainMap = dungeonGenerator.GenerateMap(roomDirector.rooms);
+			roomDirector = new Map.RoomDirector();
+			mainMap = mapGenerator.GenerateMap(roomDirector.rooms);
 
-			dungeonObject.Init();
-			dungeonObject.DungeonInstantiate(this.gameObject, mainMap);
+			mapObjectManager.Init();
+			mapObjectManager.DungeonInstantiate(this.gameObject, mainMap);
+			const int x = 10;
+			Debug.Log("xxx");
+		}
+
+		public void Update()
+		{
 		}
 
 	}

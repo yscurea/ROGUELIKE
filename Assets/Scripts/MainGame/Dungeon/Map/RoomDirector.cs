@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLikeProject.Dungeon
+namespace RogueLikeProject.Dungeon.Map
 {
 	using MyLib;
 	public class RoomDirector : MonoBehaviour

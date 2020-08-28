@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Dungeon
+namespace RogueLikeProject.Dungeon.Map
 {
 	using MyLib;
 	[System.Serializable]
-	public class DungeonGenerator
+	public class MapGenerator
 	{
 		// パラメータとメソッドが多すぎる．class分割を検討
 
@@ -104,7 +104,7 @@ namespace RogueLikeProject.Dungeon
 
 			return map;
 		}
-		public bool DivideMap()
+		bool DivideMap()
 		{
 			int itr = random.Next(0, splittableRects.Count);
 			Rect rect = splittableRects[itr];

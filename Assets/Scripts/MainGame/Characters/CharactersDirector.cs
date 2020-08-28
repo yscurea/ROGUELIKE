@@ -19,7 +19,7 @@ namespace RogueLikeProject.Character
 			// Instantiate enemy character
 			while (maxEnemyNum > enemyNum)
 			{
-				charactersObject.InstantiateCharacters();
+				characterGenerator.Instantiate();
 			}
 		}
 		public void Update()
