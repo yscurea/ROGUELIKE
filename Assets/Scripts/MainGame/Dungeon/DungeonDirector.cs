@@ -21,19 +21,31 @@ namespace RogueLikeProject.Dungeon
 
 		public void Init(int floorNumber)
 		{
+			/*
+			first, generate dungeon_map;
+				GenerateMap;
+				Instantiate map_objects;
+			second, generate character based on dungeon_map;
+				Instantiate player;
+				Instantiate others characters;
+			*/
+
+
 			// Depends on floorNumber
 			roomDirector = new Map.RoomDirector();
 			mainMap = mapGenerator.GenerateMap(roomDirector.rooms);
 
 			mapObjectManager.Init();
 			mapObjectManager.DungeonInstantiate(this.gameObject, mainMap);
-			const int x = 10;
-			Debug.Log("xxx");
 		}
 
 		public void Update()
 		{
-			// check gameover
+			/*
+			check gameover;
+			wait for player's input;
+			if there were players input, characters act;
+			*/
 		}
 
 	}

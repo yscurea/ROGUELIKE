@@ -8,6 +8,5 @@ namespace RogueLikeProject.Dungeon.Map
 	public class MapInfoManager
 	{
 		RoomDirector roomDirector;
-
 	}
 }
