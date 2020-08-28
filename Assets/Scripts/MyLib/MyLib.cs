@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace RogueLikeProject.MyLib
+namespace RogueLikeProject.Utils
 {
 	public struct Coordinate
 	{

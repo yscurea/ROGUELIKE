@@ -17,6 +17,7 @@ namespace RogueLikeProject.Dungeon
 		Map.MapObjectManager mapObjectManager = new Map.MapObjectManager();
 		TerrainType[,] mainMap;
 		Map.RoomDirector roomDirector;
+		Map.MapInfoManager mapInfoManager = new Map.MapInfoManager();
 
 		public void Init(int floorNumber)
 		{
@@ -32,6 +33,7 @@ namespace RogueLikeProject.Dungeon
 
 		public void Update()
 		{
+			// check gameover
 		}
 
 	}

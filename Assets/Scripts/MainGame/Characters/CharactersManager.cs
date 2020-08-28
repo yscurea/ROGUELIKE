@@ -1,25 +1,28 @@
 ﻿using RogueLikeProject.Dungeon;
-using RogueLikeProject.MyLib;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using RogueLikeProject.Utils;
+
 namespace RogueLikeProject.Character
 {
-	public class CharactersDirector
+	public class CharactersManager
 	{
 		int enemyNum = 0;
 		int maxEnemyNum = 10;
 		CharactersObject charactersObject;
 		CharacterGenerator characterGenerator;
-		public void Init()
+
+		Enemy[] enemies;
+		public void Init(TerrainType[,] mapInfo)
 		{
 			// Instantiate player object
 
 			// Instantiate enemy character
 			while (maxEnemyNum > enemyNum)
 			{
-				characterGenerator.Instantiate();
+				characterGenerator.InstantiateCharacter();
 			}
 		}
 		public void Update()
@@ -28,6 +31,11 @@ namespace RogueLikeProject.Character
 			{
 				charactersObject.InstantiateCharacters();
 			}
+		}
+
+		void SpawnCharacters()
+		{
+
 		}
 	}
 }

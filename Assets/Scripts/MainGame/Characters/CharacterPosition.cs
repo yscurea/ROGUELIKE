@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using RogueLikeProject.MyLib;
+using RogueLikeProject.Utils;
 
 
 namespace RogueLikeProject.Character
@@ -17,7 +17,7 @@ namespace RogueLikeProject.Character
 			charactersMap = new CharacterPosition[z, x];
 		}
 
-		public bool InitPosition(Coordinate position)
+		public bool Init(Coordinate position)
 		{
 			// if (charactersMap[position.z, position.x] != null)
 			// return false;

@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using RogueLikeProject.MyLib;
+using RogueLikeProject.Utils;
 
 namespace RogueLikeProject.Character
 {
 	public class CharacterGenerator
 	{
 		CharactersObject charactersObject;
-		CharacterPosition characterPosition;
 
-		public static void Init(int Zsize, int Xsize)
-		{
-			CharacterPosition.InitCharactersPosition(Zsize, Xsize);
-		}
-		public bool GenerateCharacter()
+		// for the time being random generate
+		public bool InstantiateCharacter(GameObject parent)
 		{
 			GameObject character = charactersObject.GetRandomObject();
 			MyLib.Coordinate crd = characterPosition.GetRandomCoordinate();
@@ -25,7 +21,7 @@ namespace RogueLikeProject.Character
 				Quaternion.identity
 			);
 
-			tmp.transform.parent = this.transform;
+			tmp.transform.parent = parent.transform;
 
 			// Script上で位置初期化とキャラ生成
 			Character ch = tmp.GetComponent<Character>();

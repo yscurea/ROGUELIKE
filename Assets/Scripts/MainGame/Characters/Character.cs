@@ -16,7 +16,6 @@ namespace RogueLikeProject.Character
 	{
 		// animation controll
 		protected Action nowAction = Action.Idling;
-		protected CharacterPosition position;
 		protected CharacterStatus status;
 		public abstract bool Act();
 	}

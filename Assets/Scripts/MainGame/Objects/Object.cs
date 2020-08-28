@@ -12,10 +12,19 @@ namespace RogueLikeProject
 		Item,
 		Trap
 	}
-	public class Object
+
+	struct Position
+	{
+		MyLib.Coordinate coordinate;
+		Layer layer;
+	}
+
+	public abstract class Object
 	{
 		static Object[,,] objects { get; }
 
 		// define here for  common functions.
+
+		Position position;
 	}
 }
