@@ -8,7 +8,6 @@ namespace RogueLikeProject.Character
 	{
 		public Enemy(Utils.Position position) : base(position)
 		{
-
 		}
 	}
 }
