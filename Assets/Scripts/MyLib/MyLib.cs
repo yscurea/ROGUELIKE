@@ -95,9 +95,8 @@ namespace RogueLikeProject.Utils
 
 }
 
-namespace RogueLikeProject.Dungeon
+namespace RogueLikeProject.Map
 {
-	using Utils;
 	public enum TerrainType
 	{
 		Wall,
@@ -110,15 +109,15 @@ namespace RogueLikeProject.Dungeon
 
 	public struct Node
 	{
-		public Direction direction;
-		public Coordinate coordinate;
+		public Utils.Direction direction;
+		public Utils.Coordinate coordinate;
 	}
 	public class Room
 	{
-		public Rect rect;
-		public List<Coordinate> entrances;
+		public Utils.Rect rect;
+		public List<Utils.Coordinate> entrances;
 
-		public Coordinate RandomCoordinate()
+		public Utils.Coordinate RandomCoordinate()
 		{
 			int xMin = rect.start.x;
 			int xMax = rect.end.x;
@@ -126,7 +125,7 @@ namespace RogueLikeProject.Dungeon
 			int zMin = rect.start.z;
 			int zMax = rect.end.z;
 
-			Coordinate coordinate;
+			Utils.Coordinate coordinate;
 
 			coordinate.x = UnityEngine.Random.Range(xMin, xMax);
 			coordinate.z = UnityEngine.Random.Range(zMin, zMax);

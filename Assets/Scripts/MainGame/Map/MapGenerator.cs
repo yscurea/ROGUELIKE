@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 using RogueLikeProject.Utils;
-namespace RogueLikeProject.Dungeon.Map
+
+namespace RogueLikeProject.Map
 {
 	[System.Serializable]
 	public class MapGenerator

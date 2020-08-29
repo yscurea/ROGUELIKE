@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Dungeon.Map
+namespace RogueLikeProject.Map
 {
 	public class MapObjectManager
 	{
@@ -15,7 +15,7 @@ namespace RogueLikeProject.Dungeon.Map
 		{
 			// this is unuseless now.
 		}
-		public void DungeonInstantiate(GameObject parent, TerrainType[,] dungeonInfo)
+		public void MapInstantiate(GameObject parent, TerrainType[,] dungeonInfo)
 		{
 			wall = (GameObject)Resources.Load("Prefabs/DungeonObjects/Normal/Wall");
 			if (wall is null)
@@ -36,9 +36,9 @@ namespace RogueLikeProject.Dungeon.Map
 							tmp = GameObject.Instantiate(
 								wall,
 								new Vector3(
-									xi * DungeonDirector.sqareSize,
+									xi * Dungeon.DungeonDirector.sqareSize,
 									0,
-									zi * DungeonDirector.sqareSize
+									zi * Dungeon.DungeonDirector.sqareSize
 								),
 								Quaternion.identity
 							);

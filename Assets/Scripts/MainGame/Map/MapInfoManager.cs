@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Dungeon.Map
+namespace RogueLikeProject.Map
 {
 	public class MapInfoManager
 	{
