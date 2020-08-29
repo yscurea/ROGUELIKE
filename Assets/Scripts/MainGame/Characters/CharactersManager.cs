@@ -12,7 +12,7 @@ namespace RogueLikeProject.Character
 		CharacterGenerator characterGenerator = new CharacterGenerator();
 
 		Enemy[] enemies;
-		public void Init(TerrainType[,] mapInfo)
+		public void Init(RogueLikeProject.Map.TerrainType[,] mapInfo)
 		{
 			// Instantiate player object
 

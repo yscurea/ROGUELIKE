@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon
 {
+	using RogueLikeProject.Map;
 	public class DungeonDirector : MonoBehaviour
 	{
 		// Is dungeon size variabillity?
@@ -13,11 +14,11 @@ namespace RogueLikeProject.Dungeon
 
 		public static float sqareSize = 1.0f;
 
-		Map.MapGenerator mapGenerator = new Map.MapGenerator();
-		Map.MapObjectManager mapObjectManager = new Map.MapObjectManager();
+		MapGenerator mapGenerator = new MapGenerator();
+		MapObjectManager mapObjectManager = new MapObjectManager();
 		TerrainType[,] mainMap;
-		Map.RoomDirector roomDirector;
-		Map.MapInfoManager mapInfoManager = new Map.MapInfoManager();
+		RoomDirector roomDirector;
+		MapInfoManager mapInfoManager = new MapInfoManager();
 
 		public void Init(int floorNumber)
 		{
@@ -32,11 +33,11 @@ namespace RogueLikeProject.Dungeon
 
 
 			// Depends on floorNumber
-			roomDirector = new Map.RoomDirector();
+			roomDirector = new RoomDirector();
 			mainMap = mapGenerator.GenerateMap(roomDirector.rooms);
 
 			mapObjectManager.Init();
-			mapObjectManager.DungeonInstantiate(this.gameObject, mainMap);
+			mapObjectManager.MapInstantiate(this.gameObject, mainMap);
 		}
 
 		public void Update()
