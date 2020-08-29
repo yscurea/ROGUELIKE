@@ -5,22 +5,34 @@ using UnityEngine;
 namespace RogueLikeProject.Dungeon
 {
 	using RogueLikeProject.Map;
+	using Character;
 	public class DungeonDirector : MonoBehaviour
 	{
 		// Is dungeon size variabillity?
 		public int dungeonZ { get; } = 30;
 		public int dungeonX { get; } = 54;
 
-
+		int floorNumber = 1;
 		public static float sqareSize = 1.0f;
 
-		MapGenerator mapGenerator = new MapGenerator();
-		MapObjectManager mapObjectManager = new MapObjectManager();
-		TerrainType[,] mainMap;
-		RoomDirector roomDirector;
-		MapInfoManager mapInfoManager = new MapInfoManager();
+		MapManager mapManager;
+		CharactersManager charactersManager;
 
-		public void Init(int floorNumber)
+		void Start()
+		{
+			Init();
+		}
+
+		void Update()
+		{
+			/*
+			check gameover;
+			wait for player's input;
+			if there were players input, players act and characters act after that;
+			*/
+		}
+
+		public void Init()
 		{
 			/*
 			first, generate dungeon_map;
@@ -30,24 +42,7 @@ namespace RogueLikeProject.Dungeon
 				Instantiate player;
 				Instantiate others characters;
 			*/
-
-
-			// Depends on floorNumber
-			roomDirector = new RoomDirector();
-			mainMap = mapGenerator.GenerateMap(roomDirector.rooms);
-
-			mapObjectManager.Init();
-			mapObjectManager.MapInstantiate(this.gameObject, mainMap);
+			mapManager.Update();
 		}
-
-		public void Update()
-		{
-			/*
-			check gameover;
-			wait for player's input;
-			if there were players input, players act and characters act after that;
-			*/
-		}
-
 	}
 }

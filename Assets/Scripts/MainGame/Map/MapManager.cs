@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace RogueLikeProject.Map
 {
-	public class MapInfoManager
+	public class MapManager
 	{
 		RoomDirector roomDirector;
+		MapGenerator mapGenerator;
+		MapObjectManager mapObjectManager;
+
+		public void Update()
+		{
+
+		}
 	}
 }
