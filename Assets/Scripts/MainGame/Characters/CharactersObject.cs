@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using RogueLikeProject.MyLib;
+using RogueLikeProject.Utils;
 namespace RogueLikeProject.Character
 {
 	[System.Serializable]
-	public class CharactersObject : MonoBehaviour
+	public class CharacterObject
 	{
 		// resourceから読み込む
 		// player(操作可能キャラ)を複数にするかどうかは要検討
@@ -35,7 +35,7 @@ namespace RogueLikeProject.Character
 		}
 		public void InstantiateCharacters(Coordinate coordinate, GameObject character)
 		{
-			Instantiate(
+			GameObject.Instantiate(
 				character,
 				new Vector3(
 					coordinate.x * Dungeon.DungeonDirector.sqareSize,

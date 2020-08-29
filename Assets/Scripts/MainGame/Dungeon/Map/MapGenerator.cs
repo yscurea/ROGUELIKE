@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+using RogueLikeProject.Utils;
 namespace RogueLikeProject.Dungeon.Map
 {
-	using MyLib;
 	[System.Serializable]
 	public class MapGenerator
 	{
@@ -31,14 +31,14 @@ namespace RogueLikeProject.Dungeon.Map
 		[SerializeField, Range(5, 100)]
 		int minRoomSize = 5;
 
-		Rect mainMap; //map without frame
+		Utils.Rect mainMap; //map without frame
 		int maxEntranceNum = 3;
 		int minEntranceNum = 1;
 		Queue<Node> nodes;
 		int roomNowItr = 0;
 		int splitFrequency;
-		List<Rect> splittableRects;
-		List<Rect> indivisibleRects;
+		List<Utils.Rect> splittableRects;
+		List<Utils.Rect> indivisibleRects;
 		System.Random random;
 
 
@@ -50,10 +50,10 @@ namespace RogueLikeProject.Dungeon.Map
 					this.map[zi, xi] = TerrainType.Wall;
 
 			// frameを除いた実際に使用できる範囲のmapを定義する
-			mainMap = new Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = this.dungeonXSsize - 1 - frameBreadth, z = this.dungeonZSize - 1 - frameBreadth } };
+			mainMap = new Utils.Rect() { start = new Coordinate() { x = frameBreadth, z = frameBreadth }, end = new Coordinate() { x = this.dungeonXSsize - 1 - frameBreadth, z = this.dungeonZSize - 1 - frameBreadth } };
 
-			splittableRects = new List<Rect>();
-			indivisibleRects = new List<Rect>();
+			splittableRects = new List<Utils.Rect>();
+			indivisibleRects = new List<Utils.Rect>();
 			nodes = new Queue<Node>();
 			random = new System.Random();
 
@@ -80,7 +80,7 @@ namespace RogueLikeProject.Dungeon.Map
 				while (thisEntranceNum-- > 0)
 				{
 					var limit = 20;
-					while (GenerateEntrance(room.Value, Random.RandomFourDirection()) == false && limit-- > 0)
+					while (GenerateEntrance(room.Value, Utils.Random.RandomFourDirection()) == false && limit-- > 0)
 					{ }
 				}
 			}
@@ -107,7 +107,7 @@ namespace RogueLikeProject.Dungeon.Map
 		bool DivideMap()
 		{
 			int itr = random.Next(0, splittableRects.Count);
-			Rect rect = splittableRects[itr];
+			Utils.Rect rect = splittableRects[itr];
 			splittableRects.RemoveAt(itr);
 			bool isHorizontally = random.Next(0, 2) > 0;
 
@@ -131,8 +131,8 @@ namespace RogueLikeProject.Dungeon.Map
 				{
 					map[xAxis, i] = TerrainType.Splitter;
 				}
-				Rect top = new Rect() { start = rect.start, end = new Coordinate() { x = rect.end.x, z = xAxis - 1 } };
-				Rect bottom = new Rect() { start = new Coordinate() { x = rect.start.x, z = xAxis + 1 }, end = rect.end };
+				Utils.Rect top = new Utils.Rect() { start = rect.start, end = new Coordinate() { x = rect.end.x, z = xAxis - 1 } };
+				Utils.Rect bottom = new Utils.Rect() { start = new Coordinate() { x = rect.start.x, z = xAxis + 1 }, end = rect.end };
 				splittableRects.Add(top);
 				splittableRects.Add(bottom);
 				return true;
@@ -144,16 +144,16 @@ namespace RogueLikeProject.Dungeon.Map
 				{
 					map[i, zAxis] = TerrainType.Splitter;
 				}
-				Rect left = new Rect() { start = rect.start, end = new Coordinate() { x = zAxis - 1, z = rect.end.z } };
-				Rect right = new Rect() { start = new Coordinate() { x = zAxis + 1, z = rect.start.z }, end = rect.end };
+				Utils.Rect left = new Utils.Rect() { start = rect.start, end = new Coordinate() { x = zAxis - 1, z = rect.end.z } };
+				Utils.Rect right = new Utils.Rect() { start = new Coordinate() { x = zAxis + 1, z = rect.start.z }, end = rect.end };
 				splittableRects.Add(left);
 				splittableRects.Add(right);
 				return true;
 			}
 		}
-		void GenerateRoom(Rect rect, Dictionary<int, Room> rooms)
+		void GenerateRoom(Utils.Rect rect, Dictionary<int, Room> rooms)
 		{
-			Rect roomRect = new Rect();
+			Utils.Rect roomRect = new Utils.Rect();
 			roomRect.start.x = random.Next(rect.start.x, rect.end.x - minRoomSize + 1);
 			roomRect.start.z = random.Next(rect.start.z, rect.end.z - minRoomSize + 1);
 			roomRect.end.x = random.Next(roomRect.start.x + minRoomSize - 1, (rect.end.x <= roomRect.start.x + maxRoomSize - 1 ? rect.end.x : roomRect.start.x + maxRoomSize - 1));

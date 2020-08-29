@@ -22,5 +22,10 @@ namespace RogueLikeProject.Character
 			this.nowAction = Action.ActEnd;
 			return true;
 		}
+
+		override protected void LoadEntity()
+		{
+			this.entity = Resources.Load<GameObject>("enemy path");
+		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using RogueLikeProject.MyLib;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ namespace RogueLikeProject.Dungeon
 		// Is dungeon size variabillity?
 		public int dungeonZ { get; } = 30;
 		public int dungeonX { get; } = 54;
+
 
 		public static float sqareSize = 1.0f;
 
@@ -44,7 +44,7 @@ namespace RogueLikeProject.Dungeon
 			/*
 			check gameover;
 			wait for player's input;
-			if there were players input, characters act;
+			if there were players input, players act and characters act after that;
 			*/
 		}
 

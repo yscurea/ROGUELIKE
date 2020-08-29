@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RogueLikeProject.Dungeon.Map
 {
-	using MyLib;
+	using Utils;
 	public class RoomDirector : MonoBehaviour
 	{
 		// カプセル化を検討

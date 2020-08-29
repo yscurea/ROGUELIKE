@@ -97,7 +97,7 @@ namespace RogueLikeProject.Utils
 
 namespace RogueLikeProject.Dungeon
 {
-	using MyLib;
+	using Utils;
 	public enum TerrainType
 	{
 		Wall,

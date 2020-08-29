@@ -3,33 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using RogueLikeProject.Utils;
-
 namespace RogueLikeProject.Character
 {
 	public class CharactersManager
 	{
 		int enemyNum = 0;
 		int maxEnemyNum = 10;
-		CharactersObject charactersObject;
-		CharacterGenerator characterGenerator;
+		CharacterGenerator characterGenerator = new CharacterGenerator();
 
 		Enemy[] enemies;
 		public void Init(TerrainType[,] mapInfo)
 		{
 			// Instantiate player object
 
-			// Instantiate enemy character
-			while (maxEnemyNum > enemyNum)
-			{
-				characterGenerator.InstantiateCharacter();
-			}
+			// Instantiate enemy character maxEnemyNum times;
 		}
 		public void Update()
 		{
 			if (enemyNum < maxEnemyNum)
 			{
-				charactersObject.InstantiateCharacters();
 			}
 		}
 

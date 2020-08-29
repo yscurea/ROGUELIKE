@@ -12,5 +12,10 @@ namespace RogueLikeProject.Character
 			return false;
 		}
 
+		protected override void LoadEntity()
+		{
+
+		}
+
 	}
 }

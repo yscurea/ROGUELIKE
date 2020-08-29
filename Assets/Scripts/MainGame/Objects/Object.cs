@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace RogueLikeProject
 {
 	enum Layer
@@ -13,18 +12,21 @@ namespace RogueLikeProject
 		Trap
 	}
 
-	struct Position
+
+	// position on dungeon map
+	public struct Position
 	{
-		MyLib.Coordinate coordinate;
+		Utils.Coordinate coordinate;
 		Layer layer;
 	}
 
 	public abstract class Object
 	{
-		static Object[,,] objects { get; }
-
 		// define here for  common functions.
+		protected static Object[,,] objects;
+		protected GameObject entity;
+		protected Position position;
+		protected abstract void LoadEntity();
 
-		Position position;
 	}
 }
