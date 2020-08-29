@@ -8,9 +8,16 @@ namespace RogueLikeProject.Map
 	public class MapManager
 	{
 		RoomDirector roomDirector;
-		MapGenerator mapGenerator;
 		MapObjectManager mapObjectManager;
 
+		public void Init()
+		{
+
+		}
+		public void GenerateMap(Object[,,] objects)
+		{
+			MapGenerator mapGenerator;
+		}
 		public void Update()
 		{
 

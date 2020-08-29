@@ -5,6 +5,22 @@ using System;
 
 namespace RogueLikeProject.Utils
 {
+	public enum Layer
+	{
+		Character,
+		Floor,
+		Item,
+		Trap
+	}
+
+
+	// position on dungeon map
+	public struct Position
+	{
+		public Utils.Coordinate coordinate;
+		public Layer layer;
+	}
+
 	public struct Coordinate
 	{
 		public int x;

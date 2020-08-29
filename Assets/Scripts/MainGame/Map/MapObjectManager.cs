@@ -15,34 +15,22 @@ namespace RogueLikeProject.Map
 		{
 			// this is unuseless now.
 		}
-		public void MapInstantiate(GameObject parent, TerrainType[,] dungeonInfo)
+		public void Instantiate(Object[,,] objects, GameObject parent, TerrainType[,] generatedMapInfo)
 		{
-			wall = (GameObject)Resources.Load("Prefabs/DungeonObjects/Normal/Wall");
-			if (wall is null)
-				Debug.Log("wall is null");
-			for (int zi = 0; zi < dungeonInfo.GetLength(0); zi++)
+			for (int zi = 0; zi < generatedMapInfo.GetLength(0); zi++)
 			{
-				for (int xi = 0; xi < dungeonInfo.GetLength(1); xi++)
+				for (int xi = 0; xi < generatedMapInfo.GetLength(1); xi++)
 				{
-					GameObject tmp;
-					switch (dungeonInfo[zi, xi])
+					switch (generatedMapInfo[zi, xi])
 					{
-						case TerrainType.Room:
+						case TerrainType.InsideWall:
+						case TerrainType.Wall:
+							Utils.Position position = new Utils.Position() { coordinate = new Utils.Coordinate() { x = xi, z = zi }, layer = Utils.Layer.Character };
+							objects[xi, zi, (int)Utils.Layer.Character] = new NormalWall(position);
 							break;
 						case TerrainType.Way:
 							break;
-						case TerrainType.InsideWall:
-						case TerrainType.Wall:
-							tmp = GameObject.Instantiate(
-								wall,
-								new Vector3(
-									xi * Dungeon.DungeonDirector.sqareSize,
-									0,
-									zi * Dungeon.DungeonDirector.sqareSize
-								),
-								Quaternion.identity
-							);
-							tmp.transform.parent = parent.transform;
+						case TerrainType.Room:
 							break;
 						default:
 							break;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RogueLikeProject.Map
 {
-	public class MapObject : Object
+	public abstract class MapObject : Object
 	{
-		override protected void LoadEntity()
+		protected MapObject(Utils.Position position) : base(position)
 		{
-			entity = Resources.Load<GameObject>("hogehoge");
+
 		}
 
 	}

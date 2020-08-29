@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RogueLikeProject.Dungeon.Map
+namespace RogueLikeProject.Map
 {
-	public class Wall : MonoBehaviour
+	using Utils;
+	public abstract class Wall : MapObject
 	{
-		// Start is called before the first frame update
-		void Start()
+		public Wall(Position position) : base(position)
 		{
-
+			// none
 		}
+	}
 
-		// Update is called once per frame
-		void Update()
+	public class NormalWall : Wall
+	{
+		public NormalWall(Position position) : base(position)
 		{
-
+			// none
+		}
+		override protected void LoadEntity()
+		{
+			this.entity = (GameObject)Resources.Load("Prefabs/DungeonObjects/Normal/Wall");
 		}
 	}
 }

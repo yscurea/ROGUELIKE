@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace RogueLikeProject.Map
 {
-	using Utils;
 	public class RoomDirector : MonoBehaviour
 	{
 		// カプセル化を検討
@@ -15,7 +14,7 @@ namespace RogueLikeProject.Map
 		{
 			rooms = new Dictionary<int, Room>();
 		}
-		public Coordinate GetRandomCoordinate()
+		public Utils.Coordinate GetRandomCoordinate()
 		{
 			Room room = rooms[UnityEngine.Random.Range(0, rooms.Count)];
 			return room.RandomCoordinate();

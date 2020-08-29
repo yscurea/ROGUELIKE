@@ -6,7 +6,6 @@ using RogueLikeProject.Utils;
 
 namespace RogueLikeProject.Map
 {
-	[System.Serializable]
 	public class MapGenerator
 	{
 		// パラメータとメソッドが多すぎる．class分割を検討
@@ -20,15 +19,10 @@ namespace RogueLikeProject.Map
 		int dungeonXSsize = 54;
 		int dungeonZSize = 30;
 
-		[SerializeField, Range(0, 10)]
 		int frameBreadth = 1;
-		[SerializeField, Range(1, 100)]
 		int maxRoomNum = 20;
-		[SerializeField, Range(1, 100)]
 		int minRoomNum = 5;
-		[SerializeField, Range(5, 100)]
 		int maxRoomSize = 100;
-		[SerializeField, Range(5, 100)]
 		int minRoomSize = 5;
 
 		Utils.Rect mainMap; //map without frame
