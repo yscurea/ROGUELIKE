@@ -16,7 +16,8 @@ namespace RogueLikeProject.Map
 		}
 		public void GenerateMap(Object[,,] objects)
 		{
-			MapGenerator mapGenerator;
+			MapGenerator mapGenerator = new MapGenerator();
+			mapGenerator.GenerateMap(roomDirector.rooms);
 		}
 		public void Update()
 		{

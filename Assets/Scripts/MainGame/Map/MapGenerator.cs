@@ -8,14 +8,9 @@ namespace RogueLikeProject.Map
 {
 	public class MapGenerator
 	{
-		// パラメータとメソッドが多すぎる．class分割を検討
-
-		// DungeonDirectorにRoomの情報を受け渡す
-
-		// 本体
 		TerrainType[,] map;
 
-		// mapのサイズ
+		// map size
 		int dungeonXSsize = 54;
 		int dungeonZSize = 30;
 
