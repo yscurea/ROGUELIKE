@@ -18,5 +18,10 @@ namespace RogueLikeProject.Character
 		protected Action nowAction = Action.Idling;
 		protected CharacterStatus status;
 		public abstract bool Act();
+
+		public Character(Utils.Position position) : base(position)
+		{
+
+		}
 	}
 }
