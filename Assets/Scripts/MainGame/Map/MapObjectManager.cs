@@ -15,6 +15,11 @@ namespace RogueLikeProject.Map
 		{
 			// this is unuseless now.
 		}
+
+		public void Update()
+		{
+
+		}
 		public void Instantiate(Object[,,] objects, GameObject parent, TerrainType[,] generatedMapInfo)
 		{
 			for (int zi = 0; zi < generatedMapInfo.GetLength(0); zi++)

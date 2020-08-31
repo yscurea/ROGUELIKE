@@ -7,21 +7,24 @@ namespace RogueLikeProject.Map
 {
 	public class MapManager
 	{
+		Object[,,] map;
 		RoomDirector roomDirector;
 		MapObjectManager mapObjectManager;
 
 		public void Init()
 		{
-
 		}
-		public void GenerateMap(Object[,,] objects)
+		public ref Object[,,] GenerateMap(GameObject parent)
 		{
 			MapGenerator mapGenerator = new MapGenerator();
-			mapGenerator.GenerateMap(roomDirector.rooms);
+			TerrainType[,] tmpMapInfo = mapGenerator.GenerateMap(roomDirector.rooms);
+			mapObjectManager.Init();
+			mapObjectManager.Instantiate(map, parent, tmpMapInfo);
+			return ref map;
 		}
 		public void Update()
 		{
-
+			mapObjectManager.Update();
 		}
 	}
 }
