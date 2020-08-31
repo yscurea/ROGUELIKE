@@ -11,6 +11,13 @@ namespace RogueLikeProject.Map
 
 		}
 
+		// if MapObject can do something, use this function with override.
+		// this function is called per frame.
+		public virtual void Update()
+		{
+
+		}
+
 	}
 
 }

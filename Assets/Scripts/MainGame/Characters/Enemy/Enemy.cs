@@ -4,28 +4,10 @@ using UnityEngine;
 
 namespace RogueLikeProject.Character
 {
-	public class Enemy : Character
+	public abstract class Enemy : Character
 	{
-		override public bool Act()
+		public Enemy(Utils.Position position) : base(position)
 		{
-			// do something when the player acted
-
-			this.nowAction = Action.ActStart;
-
-			// decide what do something
-
-			// do
-			this.nowAction = Action.InAct;
-
-
-			// end
-			this.nowAction = Action.ActEnd;
-			return true;
-		}
-
-		override protected void LoadEntity()
-		{
-			this.entity = Resources.Load<GameObject>("enemy path");
 		}
 	}
 }

@@ -20,7 +20,17 @@ namespace RogueLikeProject.Dungeon
 
 		void Start()
 		{
-			Init();
+			/*
+			first, generate dungeon_map;
+				GenerateMap;
+				Instantiate map_objects;
+			second, generate character based on dungeon_map;
+				Instantiate player;
+				Instantiate others characters;
+			*/
+			mapManager.Init();
+			mapManager.GenerateMap(this.gameObject);
+			charactersManager.Init(mapManager.map, mapManager.roomDirector);
 		}
 
 		void Update()
@@ -30,19 +40,9 @@ namespace RogueLikeProject.Dungeon
 			wait for player's input;
 			if there were players input, players act and characters act after that;
 			*/
+			mapManager.Update();
+			charactersManager.Update();
 		}
 
-		public void Init()
-		{
-			/*
-			first, generate dungeon_map;
-				GenerateMap;
-				Instantiate map_objects;
-			second, generate character based on dungeon_map;
-				Instantiate player;
-				Instantiate others characters;
-			*/
-			mapManager.Update();
-		}
 	}
 }
