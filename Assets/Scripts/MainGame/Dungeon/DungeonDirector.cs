@@ -30,7 +30,7 @@ namespace RogueLikeProject.Dungeon
 			*/
 			mapManager.Init();
 			mapManager.GenerateMap(this.gameObject);
-			charactersManager.Init();
+			charactersManager.Init(mapManager.map, mapManager.roomDirector);
 		}
 
 		void Update()
