@@ -1,39 +1,4 @@
 @startuml
 title: "RogueLike"
 
-namespace Project{
-	abstract Position
-	namespace Character{
-		class CharacterPosition
-		abstract CharacterMovement
-		abstract CharacterStatus
-		abstract CharacterAnimation<Movebehaviour>
-		Project.Position<|-down-CharacterPosition
-		namespace Enemy{
-			abstract EnemyStatus
-
-			class SlimeStatus
-			class SlimeMovement
-
-			Project.Character.CharacterStatus<|-down-EnemyStatus
-			EnemyStatus<|-down-SlimeStatus
-			Project.Character.CharacterMovement<|-down-SlimeMovement
-			Project.Character.CharacterAnimation<|-down-SlimeAnimation
-		}
-		namespace Player{
-			abstract PlayerStatus
-			Project.Character.CharacterStatus<|-down-PlayerStatus
-			abstract PlayerAnimation
-			Project.Character.CharacterAnimation<|-down-PlayerAnimation
-		}
-	}
-	namespace Item{
-		class ItemPosition
-		Project.Position<|--ItemPosition
-	}
-	namespace Map{
-		Project.Position<|-down-MapObjectPosition
-	}
-}
-
 @enduml
