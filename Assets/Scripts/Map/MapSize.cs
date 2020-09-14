@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace RogueLike.Character.Player
+namespace RogueLike.Map
 {
-	public abstract class PlayerCore : CharacterCore
+	public struct MapSize
 	{
-
+		public int x;
+		public int z;
+		public int y;
 	}
 
 }

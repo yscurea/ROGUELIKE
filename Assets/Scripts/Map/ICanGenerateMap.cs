@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICanGenerateMap
+namespace RogueLike.Map
 {
-	bool GenerateMap();
+	public interface ICanGenerateMap
+	{
+		bool GenerateMap(MapSize mapSize);
+	}
+
 }

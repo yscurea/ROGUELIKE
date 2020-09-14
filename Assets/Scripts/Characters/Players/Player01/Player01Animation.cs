@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterCore : MonoBehaviour
+public class Player01Animation : MonoBehaviour
 {
-	protected int id;
 }

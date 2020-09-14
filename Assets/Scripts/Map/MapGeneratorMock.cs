@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGeneratorMock : ICanGenerateMap
+namespace RogueLike.Map
 {
-	public bool GenerateMap()
+	public class MapGeneratorMock : ICanGenerateMap
 	{
-		return true;
+		MapGameObjects mapGameObjects;
+		public bool GenerateMap(MapSize mapSize)
+		{
+			for (int i = 0; i < mapSize.z; i++)
+			{
+				for (int j = 0; j < mapSize.x; j++)
+				{
+				}
+			}
+			return true;
+		}
 	}
 }

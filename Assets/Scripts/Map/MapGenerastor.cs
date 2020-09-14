@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerastor : MonoBehaviour
+namespace RogueLike.Map
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class MapGenerastor : ICanGenerateMap
+	{
+		public bool GenerateMap(MapSize mapSize)
+		{
+			return false;
+		}
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

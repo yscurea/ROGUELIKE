@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueLike.Manager
+namespace RogueLike.Map
 {
-	public class GameProgressManager : MonoBehaviour
+	public class MapInfoProvider : MonoBehaviour
 	{
 		// Start is called before the first frame update
 		void Start()

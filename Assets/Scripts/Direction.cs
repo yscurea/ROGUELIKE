@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum CharacterID
+
+namespace RogueLike
 {
-	// if create characters, write in this
-	// Playerid
+	struct Direction
+	{
+	}
 }

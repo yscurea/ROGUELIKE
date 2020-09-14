@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace RogueLike.Character
 {
-	public class CharactersFactory
+	public abstract class CharacterCore : MonoBehaviour
 	{
+		protected int id;
 	}
 
 }

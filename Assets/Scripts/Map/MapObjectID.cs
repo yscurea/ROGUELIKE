@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MapObjectID
+namespace RogueLike.Map
 {
+	public enum MapObjectID
+	{
+	}
 }

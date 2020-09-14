@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInputProvider
+namespace RogueLike
 {
-	Vector3 InputDirection();
+	public interface IInputProvider
+	{
+		Vector3 InputDirection();
+	}
 }
