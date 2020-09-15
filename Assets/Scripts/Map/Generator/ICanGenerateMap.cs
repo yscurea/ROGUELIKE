@@ -6,7 +6,7 @@ namespace RogueLike.Map
 {
 	public interface ICanGenerateMap
 	{
-		bool GenerateMap(MapSize mapSize);
+		bool GenerateMap(MapGameObjects mapGameObjects, MapSize mapSize);
 	}
 
 }
