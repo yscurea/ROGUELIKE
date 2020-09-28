@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace RogueLike.Characters
 {
-	public class CharactersManager
+	public enum ActionState
 	{
-
+		Idle,
+		StartAction,
+		InAction,
+		EndAction,
+		StartMove,
+		InMove,
+		EndMove,
 	}
-
 }

@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace RogueLike.Managers
+﻿namespace RogueLike.Managers
 {
 	public class StageManager
 	{
 		Stage.StageTerrainProvider stageTerrainProvider;
-		Stage.IStageGenerator stageGenerator;
+		Stage.IStageGenerator stageGenerator = new Stage.AutoStageGenerator();
 
 
-		public void GenerateStage()
+		public void GenerateStage(int floorNum)
 		{
+			UnityEngine.Debug.Log("generate stage");
 			stageGenerator.GenerateStage();
 		}
 
