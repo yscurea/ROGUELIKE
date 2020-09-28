@@ -1,10 +1,10 @@
 ﻿namespace RogueLike.Characters.Enemy
 {
-	public class EnemyCore
+	public class EnemyCore : CharacterCore
 	{
-		public void Behave()
+		public override ActionState StartBehave()
 		{
-
+			return ActionState.StartMove;
 		}
 
 		public ActionState ActionDecision()

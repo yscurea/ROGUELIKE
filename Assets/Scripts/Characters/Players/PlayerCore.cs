@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace RogueLike.Characters.Player
 {
-	public class PlayerCore
+	public class PlayerCore : CharacterCore
 	{
-		public bool Action()
+		public override RogueLike.Characters.ActionState StartBehave()
 		{
-			return false;
+			this.state = ActionState.StartMove;
+			return this.state;
 		}
 	}
 }
