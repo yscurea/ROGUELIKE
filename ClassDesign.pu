@@ -2,33 +2,8 @@
 title: "RogueLike"
 
 namespace RogueLike{
+	class StageLayer{
 
-	namespace Managers{
-		class DungeonManager{
-		}
-		class StagesManager{
-		}
-		class CharactersManager{
-		}
-		class TimeManager{
-		}
-	}
-
-	namespace Stages{
-		abstract StageGenerator{
-			+ void GenerateStage()
-		}
-	}
-
-	namespace Characters{
-		class CharacterCore{
-
-		}
-		namespace Players{
-			class PlayerCore{
-
-			}
-		}
 	}
 }
 

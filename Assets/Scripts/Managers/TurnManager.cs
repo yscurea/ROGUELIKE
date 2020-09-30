@@ -10,11 +10,7 @@
 
 		public void Update()
 		{
-			// wait for player's input
-
-			// if player move, enemies decide action and all character move
-
-			// if player action, player act; enemies act
+			charactersTurnManager.UpdateCharactersTurn();
 		}
 
 		public void TurnLimit()

@@ -15,14 +15,24 @@ namespace RogueLike.Managers
 
 			Characters.ActionState playerState = playerCore.StartBehave();
 
+			// player none input
 			if (playerState == Characters.ActionState.Idle)
 			{
 				return;
 			}
+
+			// player move
 			if (playerState == Characters.ActionState.StartMove)
 			{
 				// enemies decides action
 				// cache startMove characters
+				moveCharacters.Add(playerCore);
+				
+			}
+
+			if (playerState == Characters.ActionState.StartAction)
+			{
+
 			}
 		}
 	}

@@ -9,6 +9,7 @@ namespace RogueLike.Characters.Player
 	{
 		public override RogueLike.Characters.ActionState StartBehave()
 		{
+			Debug.Log("player behave");
 			this.state = ActionState.StartMove;
 			return this.state;
 		}
